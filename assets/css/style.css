@@ -1,0 +1,353 @@
+@import url(/assets/css/reset/style.css);
+.section-index-hero {
+  display: grid;
+  grid-template-columns: 1fr 0.75fr;
+  grid-template-rows: 41vh 41vh;
+}
+.section-index-hero .col-1 {
+  grid-area: 1/1/3/2;
+}
+.section-index-hero .col-2 {
+  grid-area: 1/2/2/3;
+}
+.section-index-hero .col-3 {
+  grid-area: 2/2/3/3;
+}
+.section-index-hero .col-1, .section-index-hero .col-2, .section-index-hero .col-3 {
+  position: relative;
+}
+.section-index-hero .col-1 img, .section-index-hero .col-2 img, .section-index-hero .col-3 img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.section-index-hero .col-1 p, .section-index-hero .col-2 p, .section-index-hero .col-3 p {
+  position: absolute;
+  color: var(--white);
+  font-family: "samsung-bold";
+  font-size: 2rem;
+  left: 1.5rem;
+  bottom: 1.5rem;
+}
+.section-index-hero h1 {
+  display: none;
+}
+
+.section-index-block-1, .section-index-block-2, .section-index-block-3 {
+  padding: 3rem 0 0;
+}
+.section-index-block-1 .b-1, .section-index-block-1 .b-2, .section-index-block-1 .b-3, .section-index-block-1 .b-4, .section-index-block-1 .b-5, .section-index-block-2 .b-1, .section-index-block-2 .b-2, .section-index-block-2 .b-3, .section-index-block-2 .b-4, .section-index-block-2 .b-5, .section-index-block-3 .b-1, .section-index-block-3 .b-2, .section-index-block-3 .b-3, .section-index-block-3 .b-4, .section-index-block-3 .b-5 {
+  position: relative;
+}
+.section-index-block-1 .b-1 h3, .section-index-block-1 .b-2 h3, .section-index-block-1 .b-3 h3, .section-index-block-1 .b-4 h3, .section-index-block-1 .b-5 h3, .section-index-block-2 .b-1 h3, .section-index-block-2 .b-2 h3, .section-index-block-2 .b-3 h3, .section-index-block-2 .b-4 h3, .section-index-block-2 .b-5 h3, .section-index-block-3 .b-1 h3, .section-index-block-3 .b-2 h3, .section-index-block-3 .b-3 h3, .section-index-block-3 .b-4 h3, .section-index-block-3 .b-5 h3 {
+  position: absolute;
+  font-size: 2rem;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  color: var(--white);
+  font-family: "samsung-bold";
+}
+.section-index-block-1 .b-1 img, .section-index-block-1 .b-2 img, .section-index-block-1 .b-3 img, .section-index-block-1 .b-4 img, .section-index-block-1 .b-5 img, .section-index-block-2 .b-1 img, .section-index-block-2 .b-2 img, .section-index-block-2 .b-3 img, .section-index-block-2 .b-4 img, .section-index-block-2 .b-5 img, .section-index-block-3 .b-1 img, .section-index-block-3 .b-2 img, .section-index-block-3 .b-3 img, .section-index-block-3 .b-4 img, .section-index-block-3 .b-5 img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.25s;
+  filter: brightness(0.6);
+}
+.section-index-block-1 .b-1 img:hover, .section-index-block-1 .b-2 img:hover, .section-index-block-1 .b-3 img:hover, .section-index-block-1 .b-4 img:hover, .section-index-block-1 .b-5 img:hover, .section-index-block-2 .b-1 img:hover, .section-index-block-2 .b-2 img:hover, .section-index-block-2 .b-3 img:hover, .section-index-block-2 .b-4 img:hover, .section-index-block-2 .b-5 img:hover, .section-index-block-3 .b-1 img:hover, .section-index-block-3 .b-2 img:hover, .section-index-block-3 .b-3 img:hover, .section-index-block-3 .b-4 img:hover, .section-index-block-3 .b-5 img:hover {
+  filter: brightness(0.7);
+}
+.section-index-block-1 .b-1 p, .section-index-block-2 .b-1 p, .section-index-block-3 .b-1 p {
+  font-size: 1.75rem;
+  line-height: 2.5;
+  font-family: "samsung-light";
+}
+
+.section-index-block-1, .section-index-block-3 {
+  display: grid;
+  grid-template-columns: 0.15fr 0.15fr 0.15fr 0.25fr 0.15fr 0.15fr 0.05fr 0.15fr;
+  grid-template-rows: 0 0.15fr 0.1fr 0.15fr 0.25fr 0.35fr 0.15fr 0.25fr 0.25fr 0;
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+}
+.section-index-block-1 .b-1, .section-index-block-3 .b-1 {
+  grid-area: 2/2/3/8;
+}
+.section-index-block-1 .b-2, .section-index-block-3 .b-2 {
+  grid-area: 3/2/4/8;
+}
+.section-index-block-1 .b-3, .section-index-block-3 .b-3 {
+  grid-area: 4/5/9/8;
+}
+.section-index-block-1 .b-4, .section-index-block-3 .b-4 {
+  grid-area: 7/3/10/5;
+}
+.section-index-block-1 .b-5, .section-index-block-3 .b-5 {
+  grid-area: 5/2/7/5;
+}
+.section-index-block-1 .b-2, .section-index-block-3 .b-2 {
+  position: relative;
+}
+.section-index-block-1 .b-2 h2, .section-index-block-3 .b-2 h2 {
+  position: absolute;
+  font-weight: bold;
+  text-align: end;
+  font-size: 3rem;
+  bottom: 0;
+  right: 0;
+}
+.section-index-block-1 .b-3, .section-index-block-1 .b-5, .section-index-block-3 .b-3, .section-index-block-3 .b-5 {
+  width: 100%;
+}
+.section-index-block-1 .b-3 img, .section-index-block-1 .b-5 img, .section-index-block-3 .b-3 img, .section-index-block-3 .b-5 img {
+  width: 100%;
+}
+.section-index-block-1 .b-4 img, .section-index-block-3 .b-4 img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.section-index-block-2 {
+  display: grid;
+  grid-template-columns: 0.15fr 0.05fr 0.15fr 0.15fr 0.15fr 0.15fr 0.15fr 0.15fr;
+  grid-template-rows: 0 0.15fr 0.1fr 0.05fr 0.05fr 0.35fr 0.15fr 0.25fr 0.35fr 0;
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+}
+.section-index-block-2 .b-1 {
+  grid-area: 2/2/3/8;
+}
+.section-index-block-2 .b-2 {
+  grid-area: 3/2/4/8;
+}
+.section-index-block-2 .b-3 {
+  grid-area: 4/2/9/5;
+}
+.section-index-block-2 .b-4 {
+  grid-area: 5/5/7/8;
+}
+.section-index-block-2 .b-5 {
+  grid-area: 7/5/10/7;
+}
+.section-index-block-2 .b-2 {
+  position: relative;
+}
+.section-index-block-2 .b-2 h2 {
+  position: absolute;
+  font-weight: bold;
+  text-align: end;
+  font-size: 3rem;
+  bottom: 0;
+  right: 0;
+}
+.section-index-block-2 .b-3, .section-index-block-2 .b-5 {
+  width: 100%;
+}
+.section-index-block-2 .b-3 img, .section-index-block-2 .b-5 img {
+  width: 100%;
+}
+.section-index-block-2 .b-4 img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.section-office-index {
+  padding: 3rem 0 0;
+}
+.section-office-index h1 {
+  font-size: 2rem;
+  font-family: "samsung-bold";
+  padding: 0 2rem 2rem;
+}
+.section-office-index .title-sucursales {
+  padding: 2.5rem 5rem;
+  font-weight: 800;
+  font-size: xx-large;
+}
+.section-office-index .sucursal-grid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 18rem 18rem 18rem 18rem;
+  gap: 10px;
+  padding: 10px;
+}
+.section-office-index .sucursal-grid h2 {
+  font-size: large;
+  padding: 0.35rem 0;
+}
+.section-office-index .sucursal-grid p {
+  font-size: medium;
+  line-height: 1.25rem;
+  padding: 0.35rem 0;
+}
+.section-office-index .sucursal-grid a {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.section-office-index .sucursal-grid a .whatsapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+.section-office-index .sucursal-grid a .whatsapp img {
+  width: 15px;
+  padding-right: 0.2rem;
+}
+.section-office-index .sucursal-grid a img {
+  filter: grayscale(1);
+}
+.section-office-index .sucursal-grid a:hover img {
+  filter: grayscale(0);
+}
+
+#map {
+  height: 90vh;
+  width: 100%;
+}
+
+#route-btn {
+  position: absolute;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  top: 19rem;
+  left: 11px;
+  width: 4px;
+  padding: 14px;
+  background: url(../svg/route.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  z-index: 9999;
+  cursor: pointer;
+}
+#route-btn.active {
+  display: none;
+}
+
+.leaflet-control-locate a .leaflet-control-locate-location-arrow {
+  -webkit-mask-image: url(../svg/gps.svg) !important;
+  mask-image: url(../svg/gps.svg) !important;
+}
+
+.leaflet-control-locate.following a .leaflet-control-locate-location-arrow {
+  background-color: var(--primary) !important;
+}
+
+.leaflet-marker-icon svg circle {
+  fill: var(--primary) !important;
+}
+
+@media (max-width: 1024px) {
+  .sucursal-grid {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media (max-width: 768px) {
+  .sucursal-grid {
+    grid-template-columns: auto auto auto;
+  }
+}
+@media (max-width: 550px) {
+  #route-btn {
+    top: 20.5rem;
+  }
+  #map {
+    height: 550px;
+    width: 100%;
+  }
+  .leaflet-routing-container h3 {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .leaflet-routing-alt table td {
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+  }
+  .leaflet-routing-container.leaflet-bar.leaflet-control {
+    width: 52% !important;
+  }
+  .leaflet-routing-collapse-btn {
+    right: 15px !important;
+    font-size: 30px !important;
+    color: var(--black) !important;
+  }
+  .leaflet-routing-container h2 {
+    font-size: 14px;
+    margin-right: 1rem;
+  }
+  .leaflet-popup-content p {
+    margin: 0.5rem 0 !important;
+  }
+  .leaflet-popup-content p a {
+    color: var(--primary);
+  }
+  .title-sucursales {
+    padding: 2.5rem 5rem;
+    font-weight: 800;
+    font-size: x-large;
+  }
+  .sucursal-grid {
+    grid-template-columns: 18rem;
+  }
+  .title-sucursales {
+    text-align: center;
+  }
+}
+.section-products .products-grid {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 1fr 1fr 1fr;
+  grid-template-rows: 0.1fr 0.1fr 0.1fr 1fr 0.1fr 1fr 0 0;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.section-products .b-1 {
+  grid-area: 1/1/2/8;
+}
+.section-products .b-2 {
+  grid-area: 2/1/3/8;
+}
+.section-products .b-3 {
+  grid-area: 3/1/4/4;
+}
+.section-products .b-4 {
+  grid-area: 4/1/5/4;
+}
+.section-products .b-5 {
+  grid-area: 5/1/6/4;
+}
+.section-products .b-6 {
+  grid-area: 6/1/8/4;
+}
+.section-products .b-1, .section-products .b-2, .section-products .b-3, .section-products .b-4, .section-products .b-5, .section-products .b-6, .section-products .b-7 {
+  padding: 0 2rem;
+  border-bottom: 1px solid #DDDDDD;
+  border-left: 1px solid #DDDDDD;
+}
+.section-products .b-1 h1 {
+  font-size: 2rem;
+  font-family: "samsung-medium";
+}
+.section-products .b-2, .section-products .b-3, .section-products .b-5 {
+  display: flex;
+}
+.section-products .b-2 {
+  justify-content: end;
+  align-items: center;
+}
+.section-products .b-3, .section-products .b-5 {
+  align-items: center;
+}
+.section-products .b-7 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-area: 8/8/4/4;
+}/*# sourceMappingURL=style.css.map */

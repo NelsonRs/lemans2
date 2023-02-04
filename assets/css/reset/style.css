@@ -1,0 +1,160 @@
+:root {
+  --black:#303030;
+  --white:#FFFFFF;
+  --primary:#CE111B;
+  --secondary:#DDDDDD;
+  --tertiary:#a1a1a1;
+  --quaternary:#505050;
+}
+
+html[data-theme=light] {
+  --bg:var(--white);
+  --text-color:var(--black);
+}
+
+html[data-theme=dark] {
+  --bg:var(--black);
+  --text-color:var(--white);
+}
+
+@font-face {
+  font-family: "samsung-thin";
+  src: url(/assets/fonts/SamsungSans-Thin.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: "samsung-light";
+  src: url(/assets/fonts/SamsungSans-Light.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: "samsung-regular";
+  src: url(/assets/fonts/SamsungSans-Regular.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: "samsung-medium";
+  src: url(/assets/fonts/SamsungSans-Medium.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: "samsung-bold";
+  src: url(/assets/fonts/SamsungSans-Bold.ttf);
+  font-display: swap;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot,
+thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section,
+summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  text-decoration: none;
+  font-weight: unset;
+  font-family: "samsung-regular";
+  -webkit-font-smoothing: antialiased;
+  font-smooth: antialiased;
+  vertical-align: baseline;
+  color: var(--black);
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  background: var(--bg);
+  transition: background 0.25s;
+}
+body * {
+  transition: color 0.5s;
+}
+
+html::-webkit-scrollbar {
+  width: 5px;
+}
+html::-webkit-scrollbar-track {
+  background: var(--white);
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--bg);
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--quaternary);
+}
+html::-webkit-scrollbar-thumb:active {
+  background: var(--tertiary);
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  background: var(--black);
+  padding: 0.5rem 2rem;
+}
+.header-nav .col-left img {
+  padding: 0 0.5rem 0 0;
+}
+.header-nav .col-right img {
+  padding: 0 0 0 0.5rem;
+}
+
+.navbar {
+  display: flex;
+  padding: 0.75rem 2rem;
+}
+.navbar .col-left, .navbar .col-mid, .navbar .col-right {
+  display: flex;
+  align-items: center;
+  width: 33.33%;
+}
+.navbar .col-left *, .navbar .col-mid *, .navbar .col-right * {
+  font-size: 0.9rem;
+}
+.navbar .col-left {
+  justify-content: flex-start;
+}
+.navbar .col-mid {
+  justify-content: center;
+}
+.navbar .col-mid img {
+  width: 80%;
+}
+.navbar .col-right {
+  justify-content: flex-end;
+}
+.navbar .col-right a {
+  padding: 0 0 0 2rem;
+}/*# sourceMappingURL=style.css.map */
