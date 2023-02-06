@@ -326,8 +326,8 @@
 .section-products .b-6 {
   grid-area: 6/1/8/4;
 }
-.section-products .b-1, .section-products .b-2, .section-products .b-3, .section-products .b-4, .section-products .b-5, .section-products .b-6, .section-products .b-7 {
-  padding: 0 2rem;
+.section-products .b-1, .section-products .b-2, .section-products .b-3, .section-products .b-4, .section-products .b-5, .section-products .b-6 {
+  padding: 1rem 2rem;
   border-bottom: 1px solid #DDDDDD;
   border-left: 1px solid #DDDDDD;
 }
@@ -335,19 +335,50 @@
   font-size: 2rem;
   font-family: "samsung-medium";
 }
-.section-products .b-2, .section-products .b-3, .section-products .b-5 {
-  display: flex;
-}
 .section-products .b-2 {
+  display: flex;
   justify-content: end;
   align-items: center;
+  padding: 1rem 2rem;
 }
-.section-products .b-3, .section-products .b-5 {
-  align-items: center;
+.section-products .b-2 input {
+  padding: 0.35rem 0.5rem;
+  border: unset;
+  border-bottom: 1px solid #DDDDDD;
+  transition: 0.25s border;
+}
+.section-products .b-2 input:focus-visible {
+  outline: unset;
+  border-bottom: 1px solid #999999;
+}
+.section-products .b-3 h2 {
+  font-size: 1.5rem;
+}
+.section-products .b-4 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.section-products .b-4 h3 {
+  width: 40%;
+  padding: 0.5rem 0 0.5rem;
+  font-family: "samsung-light";
+  cursor: pointer;
+}
+.section-products .b-5 p {
+  font-size: 1.5rem;
+}
+.section-products .b-6 p {
+  padding: 0.5rem 0;
+  font-family: "samsung-light";
+  cursor: pointer;
 }
 .section-products .b-7 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   grid-area: 8/8/4/4;
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+  border-left: 1px solid #DDDDDD;
 }/*# sourceMappingURL=style.css.map */
