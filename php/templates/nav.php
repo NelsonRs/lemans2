@@ -1,4 +1,5 @@
-<nav class="navbar">
+<button style="display:none;" id="theme-switch"></button>
+<nav data-scroll-section class="navbar">
     <div class="col-left">
         <a href="?">Menu</a>
     </div>
