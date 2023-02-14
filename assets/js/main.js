@@ -1,9 +1,9 @@
-const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
-    smooth: true
-    ,multiplier: .7
-    ,touchMultiplier: 1
-});
+// const scroll = new LocomotiveScroll({
+//     el: document.querySelector('[data-scroll-container]'),
+//     smooth: true
+//     ,multiplier: .7
+//     ,touchMultiplier: 2
+// });
 
 var toggle = document.getElementById("theme-switch");
 

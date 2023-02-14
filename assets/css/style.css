@@ -159,12 +159,13 @@
 }
 
 .section-office-index {
-  padding: 3rem 0 0;
+  padding: 2rem 0 0;
 }
 .section-office-index h1 {
   font-size: 2rem;
   font-family: "samsung-bold";
   padding: 0 2rem 2rem;
+  border-bottom: 1px solid var(--border-color);
 }
 .section-office-index .title-sucursales {
   padding: 2.5rem 5rem;
@@ -333,9 +334,79 @@
 }
 .section-products .grid {
   display: flex;
+  position: relative;
 }
 .section-products .grid .col-left {
+  position: sticky;
+  top: 0;
   width: 25%;
+}
+.section-products .grid .col-left .filter .collapsible {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  padding: 1rem 1rem 0.5rem;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  outline: none;
+  background: unset;
+}
+.section-products .grid .col-left .filter .collapsible * {
+  font-size: 1rem;
+}
+.section-products .grid .col-left .filter .collapsible.active::after {
+  content: "−";
+}
+.section-products .grid .col-left .filter .collapsible::after {
+  content: "+";
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+.section-products .grid .col-left .filter .content {
+  padding: 0 1rem;
+  max-height: 0;
+  overflow: hidden;
+}
+.section-products .grid .col-left .filter .content.active ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 16rem;
+  padding: 1rem;
+}
+.section-products .grid .col-left .filter .content .option {
+  padding: 0.25rem 0;
+}
+.section-products .grid .col-left .filter .content label {
+  cursor: pointer;
+}
+.section-products .grid .col-left .filter .content input[type=checkbox] {
+  position: relative;
+  top: 2px;
+  box-sizing: content-box;
+  width: 14px;
+  height: 14px;
+  margin: 0 5px 0 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  border: 1px solid var(--secondary);
+}
+.section-products .grid .col-left .filter .content input[type=checkbox]:before {
+  content: "";
+  display: block;
+  transition: transform 200ms;
+}
+.section-products .grid .col-left .filter .content input[type=checkbox]:checked:before {
+  width: 4px;
+  height: 9px;
+  margin: 0px 4px;
+  border-bottom: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+  transform: rotate(45deg);
 }
 .section-products .grid .col-right {
   width: 75%;
@@ -377,12 +448,12 @@
   height: 65%;
 }
 .section-products .grid .col-right .products .card .top:hover img {
-  max-width: 15.5rem;
-  max-height: 12.5rem;
+  max-width: 13.5rem;
+  max-height: 10.5rem;
 }
 .section-products .grid .col-right .products .card .top img {
-  max-width: 15rem;
-  max-height: 12rem;
+  max-width: 13rem;
+  max-height: 10rem;
   -o-object-fit: contain;
      object-fit: contain;
   transition: all 0.25s;
@@ -421,68 +492,4 @@
 }
 .section-products .grid .col-right .products .card .bottom p:nth-of-type(2) {
   font-family: "samsung-light";
-}
-.section-products .collapsible {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  width: 100%;
-  padding: 1rem 1rem 0.5rem;
-  border: none;
-  border-bottom: 1px solid var(--border-color);
-  outline: none;
-  background: unset;
-}
-.section-products .collapsible * {
-  font-size: 1rem;
-}
-.section-products .collapsible.active::after {
-  content: "−";
-}
-.section-products .collapsible::after {
-  content: "+";
-  font-size: 1.5rem;
-  color: var(--text-color);
-}
-.section-products .content {
-  padding: 0 1rem;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.25s ease-out, padding 0.25s ease-out;
-}
-.section-products .content.active {
-  padding: 1rem;
-}
-.section-products .content .option {
-  padding: 0.25rem 0;
-}
-.section-products .content label {
-  cursor: pointer;
-}
-.section-products .content input[type=checkbox] {
-  position: relative;
-  top: 2px;
-  box-sizing: content-box;
-  width: 14px;
-  height: 14px;
-  margin: 0 5px 0 0;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-       appearance: none;
-  border: 1px solid var(--secondary);
-}
-.section-products .content input[type=checkbox]:before {
-  content: "";
-  display: block;
-  transition: transform 200ms;
-}
-.section-products .content input[type=checkbox]:checked:before {
-  width: 4px;
-  height: 9px;
-  margin: 0px 4px;
-  border-bottom: 2px solid var(--primary);
-  border-right: 2px solid var(--primary);
-  transform: rotate(45deg);
 }/*# sourceMappingURL=style.css.map */

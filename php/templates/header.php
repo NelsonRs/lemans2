@@ -6,5 +6,5 @@
     <div class="col-right">
         <img src="<?php $root?>/assets/svg/resource/logo-instagram.svg" alt="Logo de Rodalems">
         <img src="<?php $root?>/assets/svg/resource/logo-facebook.svg" alt="Logo de Rodalems">
-    </div>  
+    </div>
 </header>

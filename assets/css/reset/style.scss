@@ -8,7 +8,6 @@
     --tertiary        :#a1a1a1;
     --quaternary      :#505050;
   }
-  
 html[data-theme='light'] {
     --bg                            :var(--white);
     --card-bg                       :var(--secondary);
@@ -78,7 +77,6 @@ html[data-theme='dark'] {
   blockquote,q { quotes: none; }
   blockquote:before,blockquote:after,q:before,q:after { content: ''; content: none; }
   table { border-collapse: collapse; border-spacing: 0; }
-  
   ///////////////////////////////////////////////////////////////////////////////////////////////
   // HTML
   html {
@@ -100,9 +98,8 @@ html[data-theme='dark'] {
   html{
     &::-webkit-scrollbar { width: 5px; }
     &::-webkit-scrollbar-track { background: var(--white); }
-    &::-webkit-scrollbar-thumb { 
+    &::-webkit-scrollbar-thumb {
       background: var(--bg);
-  
       &:hover { background: var(--quaternary); }
       &:active { background: var(--tertiary); }
     }
