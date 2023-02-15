@@ -243,6 +243,7 @@
         h1{
             font-size: 2rem;
             font-family: 'samsung-bold';
+            text-transform: uppercase;
         }
     }
     .search{
@@ -252,6 +253,7 @@
         justify-content: end;
         border-bottom: 1px solid var(--border-color);
         input{
+            width: 15rem;
             background: unset;
             border: unset;
             border-bottom: 1px solid var(--border-color);
@@ -282,56 +284,61 @@
                     border-bottom: 1px solid var(--border-color);
                     outline: none;
                     background: unset;
-                        *{
-                            font-size: 1rem;
-                        }
-                        &.active::after{
-                            content: '\2212';
-                        }
-                        &::after{
-                            content: '\002B';
-                            font-size: 1.5rem;
-                            color: var(--text-color);
-                        }
+                    h2{
+                        font-size: 1rem;
+                        font-family: 'samsung-medium';
+                        text-transform: uppercase;
                     }
-                    .content {
-                        padding: 0 1rem;
-                        max-height: 0;
-                        overflow: hidden;
-                        // transition: max-height 0.25s ease-out,padding .25s ease-out;
-                        &.active{
-                            ul{
-                                display: flex;
-                                flex-direction: column;
-                                flex-wrap: wrap;
-                                height: 16rem;
-                                padding: 1rem;
+                    &.active::after{
+                        content: '\2212';
+                    }
+                    &::after{
+                        content: '\002B';
+                        font-size: 1.5rem;
+                        color: var(--text-color);
+                    }
+                }
+                .content {
+                    display: none;
+                    padding: 2rem;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.5s ease-out, padding .5s ease-out;
+                    &.active{
+                        display: unset;
+                        transition: max-height 0.5s ease-out, padding .5s ease-out;
+                        ul{
+                            padding: 0 1.5rem;
+                            li{
+                                padding: .25rem 0;
+                            }
+                            *{
+                                font-size: 1rem;
+                                font-family: 'samsung-light';
                             }
                         }
-                        .option{
-                            padding: 0.25rem 0;
-                        }
-                        label {
-                            cursor: pointer;
-                        }
-                        input[type="checkbox"] {
+                    }
+                    label {
+                        cursor: pointer;
+                    }
+                    input[type="checkbox"] {
                         position: relative;
                         top: 2px;
                         box-sizing: content-box;
                         width: 14px;
                         height: 14px;
                         margin: 0 5px 0 0;
-                        cursor: pointer;
+                    cursor: pointer;
                         -webkit-appearance: none;
                         appearance: none;
                         border: 1px solid var(--secondary);
-                        }
-                        input[type="checkbox"]:before {
+                    }
+                    input[type="checkbox"]:before {
                         content: '';
                         display: block;
                         transition: transform 200ms;
-                        }
-                        input[type="checkbox"]:checked:before {
+                    }
+                    input[type="checkbox"]:checked:before {
                         width: 4px;
                         height: 9px;
                         margin: 0px 4px;
@@ -341,7 +348,7 @@
                     }
                 }
             }
-        }
+        }   
         .col-right{
             width: 75%;
             .products{
@@ -353,6 +360,7 @@
                     flex-direction: column;
                     box-sizing: border-box;
                     border: 1px solid transparent;
+                    background: var(--on-secondary);
                     cursor: pointer;
                     height: 350px;
                     width: 100%;
@@ -381,13 +389,13 @@
                         height: 65%;
                         &:hover{
                             img{
-                                max-width: 13.5rem;
-                                max-height: 10.5rem;
+                                max-width: 14.5rem;
+                                max-height: 11.5rem;
                             }
                         }
                         img{
-                            max-width: 13rem;
-                            max-height: 10rem;
+                            max-width: 14rem;
+                            max-height: 11rem;
                             object-fit: contain;
                             transition: all .25s;
                         }

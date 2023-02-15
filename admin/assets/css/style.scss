@@ -1,0 +1,67 @@
+// RESET CSS
+html,body,div,span,applet,object,iframe,
+h1,h2,h3,h4,h5,h6,
+p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,
+ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,
+thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,
+summary,time,mark,audio,video{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: small;
+  color: #303030;
+  text-decoration: none;
+  vertical-align: baseline;
+  font-family: 'Open Sans'!important;
+  &::selection {
+    background-color: #303030;
+    color: white;
+  }
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
+
+body { line-height: 1; }
+
+ol,ul { list-style: none; }
+
+blockquote,q { quotes: none; }
+blockquote:before,blockquote:after,q:before,q:after { content: ''; content: none; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+html,body{
+  width: 100%;
+  margin: 0;
+}
+.nav{
+  top: 0;
+  position: sticky;
+  .nav-ul,li{ display: flex;}
+  .nav-ul{
+    padding: 1.5rem 5rem;
+    background: white;
+    li:nth-of-type(n){ 
+      align-items: center;
+      width: 50%;  
+      font-weight: 600;
+      a{ 
+        background: hsl(0, 0%, 98%);
+        padding: 0.5rem 2rem;
+        border: hsl(0, 0%, 95%) 1px solid;
+        border-radius: 0.35rem;
+        margin: 0 1rem;
+      }
+      a:nth-of-type(1){
+        background: hsl(0, 0%, 100%);
+        border: none;
+        cursor: auto;
+        &:hover{ color: #303030;}
+      }
+      a:hover{ &:nth-of-type(2){ color: #303030; background: hsl(0, 0%, 95%); border: hsl(0, 0%, 50%) 1px solid; }}
+    }
+    li:nth-of-type(1){ justify-content: flex-start; }
+    li:nth-of-type(2){ justify-content: flex-end; }
+   
+  }
+}

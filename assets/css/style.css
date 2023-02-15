@@ -313,6 +313,7 @@
 .section-products header h1 {
   font-size: 2rem;
   font-family: "samsung-bold";
+  text-transform: uppercase;
 }
 .section-products .search {
   padding: 1rem 0;
@@ -322,6 +323,7 @@
   border-bottom: 1px solid var(--border-color);
 }
 .section-products .search input {
+  width: 15rem;
   background: unset;
   border: unset;
   border-bottom: 1px solid var(--border-color);
@@ -353,8 +355,10 @@
   outline: none;
   background: unset;
 }
-.section-products .grid .col-left .filter .collapsible * {
+.section-products .grid .col-left .filter .collapsible h2 {
   font-size: 1rem;
+  font-family: "samsung-medium";
+  text-transform: uppercase;
 }
 .section-products .grid .col-left .filter .collapsible.active::after {
   content: "−";
@@ -365,19 +369,25 @@
   color: var(--text-color);
 }
 .section-products .grid .col-left .filter .content {
-  padding: 0 1rem;
+  display: none;
+  padding: 2rem;
   max-height: 0;
   overflow: hidden;
+  transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+}
+.section-products .grid .col-left .filter .content.active {
+  display: unset;
+  transition: max-height 0.5s ease-out, padding 0.5s ease-out;
 }
 .section-products .grid .col-left .filter .content.active ul {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 16rem;
-  padding: 1rem;
+  padding: 0 1.5rem;
 }
-.section-products .grid .col-left .filter .content .option {
+.section-products .grid .col-left .filter .content.active ul li {
   padding: 0.25rem 0;
+}
+.section-products .grid .col-left .filter .content.active ul * {
+  font-size: 1rem;
+  font-family: "samsung-light";
 }
 .section-products .grid .col-left .filter .content label {
   cursor: pointer;
@@ -421,6 +431,7 @@
   flex-direction: column;
   box-sizing: border-box;
   border: 1px solid transparent;
+  background: var(--on-secondary);
   cursor: pointer;
   height: 350px;
   width: 100%;
@@ -448,12 +459,12 @@
   height: 65%;
 }
 .section-products .grid .col-right .products .card .top:hover img {
-  max-width: 13.5rem;
-  max-height: 10.5rem;
+  max-width: 14.5rem;
+  max-height: 11.5rem;
 }
 .section-products .grid .col-right .products .card .top img {
-  max-width: 13rem;
-  max-height: 10rem;
+  max-width: 14rem;
+  max-height: 11rem;
   -o-object-fit: contain;
      object-fit: contain;
   transition: all 0.25s;
