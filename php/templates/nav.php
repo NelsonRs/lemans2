@@ -1,4 +1,4 @@
-<button style="display:none;" id="theme-switch"></button>
+<button style="display:none;" id="theme-switch">Switch</button>
 <nav data-scroll-section class="navbar">
     <div class="col-left">
         <a href="?">Menu</a>

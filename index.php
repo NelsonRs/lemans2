@@ -89,7 +89,7 @@
             <div class="b-2">
                 <h2>Industrial</h2>
             </div>
-            <div class="b-3">
+            <div class="b-3">b
                 <img src="/assets/img/banner/banner-index-industrial-1.webp" alt="Mesas">
                 <h3>Herramientas</h3>
             </div>

@@ -10,7 +10,8 @@
 
 html[data-theme=light] {
   --bg:var(--white);
-  --card-bg:var(--secondary);
+  --card-bg:var(--on-secondary);
+  --card-bg-hover:var(--secondary);
   --text-color:var(--black);
   --text-secondary-color:var(--quaternary);
   --border-color:var(--secondary);
@@ -20,6 +21,7 @@ html[data-theme=light] {
 html[data-theme=dark] {
   --bg:var(--black);
   --card-bg:var(--quaternary);
+  --card-bg-hover:var(--tertiary);
   --text-color:var(--white);
   --text-secondary-color:var(--secondary);
   --border-color:var(--quaternary);
@@ -151,7 +153,8 @@ html::-webkit-scrollbar-thumb:active {
   width: 33.33%;
 }
 .navbar .col-left *, .navbar .col-mid *, .navbar .col-right * {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
 }
 .navbar .col-left {
   justify-content: flex-start;
