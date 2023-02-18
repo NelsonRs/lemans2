@@ -440,7 +440,7 @@
   width: 100%;
   transition: all 0.25s;
 }
-.section-products .grid .col-right .products .card:hover .top {
+.section-products .grid .col-right .products .card:hover .top::before {
   background: var(--card-bg-hover);
 }
 .section-products .grid .col-right .products .card:hover .top img {
@@ -449,14 +449,25 @@
   filter: brightness(1.15);
 }
 .section-products .grid .col-right .products .card .top {
+  transition: all 0.25s;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--card-bg);
   height: 65%;
 }
+.section-products .grid .col-right .products .card .top::before {
+  transition: all 0.25s;
+  position: absolute;
+  z-index: 0;
+  background: var(--card-bg);
+  width: 100%;
+  height: 100%;
+  content: "";
+}
 .section-products .grid .col-right .products .card .top img {
+  position: relative;
+  z-index: 0;
   max-width: 70%;
   max-height: 70%;
   -o-object-fit: contain;
@@ -494,6 +505,7 @@
   -webkit-line-clamp: 1;
   line-height: 2;
   overflow: hidden;
+  font-size: 0.9rem;
   font-family: "samsung-bold";
   text-transform: uppercase;
 }

@@ -377,7 +377,9 @@
                     transition: all .25s;
                     &:hover{
                         .top{
-                            background: var(--card-bg-hover);
+                            &::before{
+                                background: var(--card-bg-hover);
+                            }
                             img{
                                 max-width: 72.5%;
                                 max-height: 72.5%;
@@ -386,13 +388,24 @@
                         }
                     }
                     .top{
+                        transition: all .25s;
                         position: relative;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        background: var(--card-bg);
                         height: 65%;
+                        &::before{
+                            transition: all .25s;
+                            position: absolute;
+                            z-index: 0;
+                            background: var(--card-bg);
+                            width: 100%;
+                            height: 100%;
+                            content: "";
+                        }
                         img{
+                            position: relative;
+                            z-index: 0;
                             max-width: 70%;
                             max-height: 70%;
                             object-fit: contain;
@@ -425,6 +438,7 @@
                             -webkit-line-clamp: 1;
                             line-height: 2;
                             overflow: hidden;
+                            font-size: .9rem;
                             font-family: 'samsung-bold';
                             text-transform: uppercase;
                         }

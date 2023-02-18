@@ -16,6 +16,7 @@ html[data-theme=light] {
   --text-secondary-color:var(--quaternary);
   --border-color:var(--secondary);
   --border-color-hover:var(--quaternary);
+  --logo-text:var(--primary);
 }
 
 html[data-theme=dark] {
@@ -26,6 +27,7 @@ html[data-theme=dark] {
   --text-secondary-color:var(--secondary);
   --border-color:var(--quaternary);
   --border-color-hover:var(--secondary);
+  --logo-text:var(--white);
 }
 
 @font-face {
@@ -117,16 +119,16 @@ html::-webkit-scrollbar {
   width: 5px;
 }
 html::-webkit-scrollbar-track {
-  background: var(--white);
+  background: var(--card-bg);
 }
 html::-webkit-scrollbar-thumb {
-  background: var(--bg);
+  background: var(--text-color);
 }
 html::-webkit-scrollbar-thumb:hover {
-  background: var(--quaternary);
+  background: var(--card-bg-hover);
 }
 html::-webkit-scrollbar-thumb:active {
-  background: var(--tertiary);
+  background: var(--black);
 }
 
 .header-nav {
@@ -162,8 +164,12 @@ html::-webkit-scrollbar-thumb:active {
 .navbar .col-mid {
   justify-content: center;
 }
-.navbar .col-mid img {
-  width: 80%;
+.navbar .col-mid a {
+  font-family: "samsung-bold";
+  font-size: 1rem;
+  line-height: 0.8;
+  -webkit-text-stroke: 0.7px;
+  color: var(--logo-text);
 }
 .navbar .col-right {
   justify-content: flex-end;

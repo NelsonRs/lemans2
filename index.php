@@ -105,6 +105,5 @@
     </main>
     <!-- JS -->
     <?php include_once $root.'/php/templates/head/js.php'; ?>
-    <script src="<?php $root?>/assets/js/index.js"></script>
 </body>
 </html>

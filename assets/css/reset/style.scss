@@ -16,6 +16,7 @@ html[data-theme='light'] {
     --text-secondary-color          :var(--quaternary);
     --border-color                  :var(--secondary);
     --border-color-hover            :var(--quaternary);
+    --logo-text                     :var(--primary); 
 }
 html[data-theme='dark'] {
 
@@ -26,6 +27,7 @@ html[data-theme='dark'] {
     --text-secondary-color          :var(--secondary);
     --border-color                  :var(--quaternary);
     --border-color-hover            :var(--secondary);
+    --logo-text                     :var(--white); 
 }
 
 
@@ -99,11 +101,11 @@ html[data-theme='dark'] {
 
   html{
     &::-webkit-scrollbar { width: 5px; }
-    &::-webkit-scrollbar-track { background: var(--white); }
+    &::-webkit-scrollbar-track { background: var(--card-bg); }
     &::-webkit-scrollbar-thumb {
-      background: var(--bg);
-      &:hover { background: var(--quaternary); }
-      &:active { background: var(--tertiary); }
+      background: var(--text-color);
+      &:hover { background: var(--card-bg-hover); }
+      &:active { background: var(--black); }
     }
   }
 
@@ -142,8 +144,15 @@ html[data-theme='dark'] {
     }
     .col-mid{
         justify-content: center;
-        img{
-          width: 80%;
+        // img{
+        //   width: 80%;
+        // }
+        a{
+          font-family: 'samsung-bold';
+          font-size: 1rem;
+          line-height: .8;
+          -webkit-text-stroke: .7px;
+          color: var(--logo-text);
         }
     }
     .col-right{
