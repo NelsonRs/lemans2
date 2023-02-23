@@ -1,9 +1,9 @@
 :root {
   --black:#1C1C1C;
-  --white:#FFFFFF;
+  --white:#F2F2F2;
   --primary:#CE111B;
-  --secondary:#DDDDDD;
-  --on-secondary:#F5F5F5;
+  --secondary:#EEEEEE;
+  --on-secondary:#F7F7F7;
   --tertiary:#a1a1a1;
   --quaternary:#505050;
 }
@@ -155,8 +155,7 @@ html::-webkit-scrollbar-thumb:active {
   width: 33.33%;
 }
 .navbar .col-left *, .navbar .col-mid *, .navbar .col-right * {
-  font-size: 0.7rem;
-  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 .navbar .col-left {
   justify-content: flex-start;
@@ -164,12 +163,8 @@ html::-webkit-scrollbar-thumb:active {
 .navbar .col-mid {
   justify-content: center;
 }
-.navbar .col-mid a {
-  font-family: "samsung-bold";
-  font-size: 1rem;
-  line-height: 0.8;
-  -webkit-text-stroke: 0.7px;
-  color: var(--logo-text);
+.navbar .col-mid img {
+  width: 80%;
 }
 .navbar .col-right {
   justify-content: flex-end;

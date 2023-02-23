@@ -4,8 +4,7 @@
         <a href="?">Menu</a>
     </div>
     <div class="col-mid">
-        <!-- <a href="/"><img src="/assets/svg/logo/le-mans/logo-le-mans-without-bg.svg" alt="Logo de Le Mans Ltda"></a> -->
-        <a href="/">Le<br>Mans</a>
+        <a href="/"><img src="/assets/svg/logo/le-mans/logo-le-mans-without-bg.svg" alt="Logo de Le Mans Ltda"></a>
     </div>
     <div class="col-right">
         <a href="/productos/">Productos</a>

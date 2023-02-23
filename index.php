@@ -30,11 +30,11 @@
         <section class="section-index-hero">
             <h1>Le Mans Ltda.</h1>
             <a href="?" class="col-1">
-                <img id="img-hero-1" class="img-1" src="/assets/img/banner/banner-index-hero-furniture-1.webp" alt="Sección de Muebles">
+                <img id="img-hero-1" class="img-1" src="/assets/img/banner/banner-main.webp" alt="Sección de Muebles">
                 <p>Muebles</p>
             </a>
             <a href="?" class="col-2">
-                <img id="img-hero-2" src="/assets/img/banner/banner-index-hero-iluminacion-1.jpg" alt="Sección de Iluminación">
+                <img id="img-hero-2" src="/assets/img/banner/banner-main-iluminacion.jpg" alt="Sección de Iluminación">
                 <p>Iluminación</p>
             </a>
             <a href="?" class="col-3">
@@ -106,4 +106,4 @@
     <!-- JS -->
     <?php include_once $root.'/php/templates/head/js.php'; ?>
 </body>
-</html>
+</html> 
