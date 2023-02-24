@@ -23,9 +23,12 @@ function getProducts() {
               '<img src="/assets/img/product/'+product.image+'">'+
             '</div>'+
             '<div class="bottom">'+
-              '<span><b>•</b>&nbsp;'+product.brand+'</span>'+
+              '<div class="brand">'+
+                '<span>'+product.brand+'</span><span><img src="/assets/svg/easy-credit.svg" alt"Easy Credit"></span>'+
+              '</div>'+
               '<p>'+product.name+'</p>'+
               '<p>'+product.price+' Bs</p>'+
+              '<button>Comprar</button>'+
             '</div>'+
           '</div>';
           $("#filters-card").append(row);

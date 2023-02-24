@@ -27,10 +27,8 @@
         <!-- NAVBAR -->
         <?php include_once $root . '/php/templates/nav.php'; ?>
         <section class="section-products">
-            <header>
-                <h1>Todos los Productos</h1>
-            </header>
             <div class="search">
+                <h1>Todos los Productos</h1>
                 <form action="#" method="post">
                     <input type="search" name="search" id="search" placeholder="Buscar">
                 </form>
@@ -51,6 +49,22 @@
                         </button>
                         <form class="content form">
                             <ul> <?=selectCheckbox('brand')?> </ul>
+                        </form>
+                    </div>
+                    <div class="filter">
+                        <button class="collapsible">
+                            <h2>Material</h2>
+                        </button>
+                        <form class="content form">
+                            <ul> <?=selectCheckbox('material')?> </ul>
+                        </form>
+                    </div>
+                    <div class="filter">
+                        <button class="collapsible">
+                            <h2>Color</h2>
+                        </button>
+                        <form class="content form">
+                            <ul> <?=selectCheckbox('color')?> </ul>
                         </form>
                     </div>
                 </div>

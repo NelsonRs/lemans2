@@ -23,7 +23,7 @@
     }
 
     global $mysqli;
-    $products = $mysqli->query("SELECT P.id,P.name,P.price,P.image,B.name AS 'brand',K.name AS 'kind' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN brand B ON B.id = P.brand_id $extra_query");
+    $products = $mysqli->query("SELECT P.id,P.name,P.price,P.image,B.name AS'brand',C.name AS'color',M.name AS'material',K.name AS'kind' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id $extra_query");
     $product_list = [];
     while ($product = $products->fetch_assoc()) {
         $product_list[$product['id']] = $product;

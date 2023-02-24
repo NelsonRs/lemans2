@@ -8,13 +8,17 @@
     .col-1 { grid-area: 1 / 1 / 3 / 2; }
     .col-2 { grid-area: 1 / 2 / 2 / 3; }
     .col-3 { grid-area: 2 / 2 / 3 / 3; }
-
     .col-1,.col-2,.col-3{
         position: relative;
         img{
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: brightness(.7);
+            transition: all .25s;
+            &:hover{
+                filter: brightness(.8) contrast(1.1);
+            }
         }
         p{
             position: absolute;
@@ -238,20 +242,15 @@
 
 .section-products{
     padding: 2rem;
-    header{
-        padding: 1rem 0 .5rem;
-        border-bottom: 1px solid var(--border-color);
-        h1{
-            font-size: 2rem;
-            font-family: 'samsung-bold';
-        }
-    }
     .search{
-        padding: 1rem 0;
         display: flex;
         align-items: center;
-        justify-content: end;
-        border-bottom: 1px solid var(--border-color);
+        justify-content: space-between;
+        h1{
+            font-size: 2rem;
+            font-family: 'Roboto';
+            font-weight: 900;
+        }
         input{
             width: 15rem;
             background: unset;
@@ -266,12 +265,18 @@
         }
     }
     .grid{
-        display: flex;
+        display: grid;
         position: relative;
+        grid-template-columns: .85fr 1fr 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        padding: 3rem 0 0;
+        
+        .col-left { grid-area: 1 / 1 / 6 / 2; }
+        .col-right { grid-area: 1 / 2 / 6 / 5; }
+
         .col-left{
             position: sticky;
             top: 0;
-            width: 25%;
             .filter{
                 .collapsible {
                     display: flex;
@@ -279,7 +284,7 @@
                     align-items: center;
                     cursor: pointer;
                     width: 100%;
-                    padding: 1rem 1rem .5rem;
+                    padding: 1rem 0 .5rem;
                     border: none;
                     border-bottom: 1px solid var(--border-color);
                     outline: none;
@@ -287,7 +292,6 @@
                     h2{
                         font-size: 1rem;
                         font-family: 'samsung-medium';
-                        text-transform: uppercase;
                     }
                     &.active::after{
                         content: '\2212';
@@ -322,13 +326,6 @@
                         cursor: pointer;
                         b{
                             color: var(--primary);
-                            // background: var(--card-bg);
-                            // font-family: 'samsung-regular'!important;
-                            // padding: 0.2rem;
-                            // border-radius: 100%;
-                            // display: inline-block;
-                            // text-align: center;
-                            // box-sizing: border-box;
                         }
                     }
                     input[type="checkbox"] {
@@ -360,11 +357,11 @@
             }
         }   
         .col-right{
-            width: 75%;
+            padding: 0 0 0 2rem;
             .products{
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: 1fr 1fr 1fr;
+                grid-auto-rows: 1fr;
                 gap: 15px;
                 .card{
                     display: flex;
@@ -383,7 +380,12 @@
                             img{
                                 max-width: 72.5%;
                                 max-height: 72.5%;
-                                filter: brightness(1.15);
+                                filter: brightness(1.1) contrast(1.1);
+                            }
+                        }
+                        .bottom{
+                            button{
+                                background: var(--border-color);
                             }
                         }
                     }
@@ -398,7 +400,6 @@
                             transition: all .25s;
                             position: absolute;
                             z-index: 0;
-                            background: var(--card-bg);
                             width: 100%;
                             height: 100%;
                             content: "";
@@ -416,33 +417,40 @@
                         box-sizing: border-box;
                         height: 35%;
                         padding: 1rem 0;
-                        span{
-                            display: inline-block;
-                            background: var(--card-bg);
-                            border-radius: 10px;
-                            margin: .25rem 0;
-                            padding: .85rem .75rem;
-                            font-size: .9rem;
-                            line-height: 0;
-                            z-index: 1;
-                            transition: all .25s;
-                            &:hover{
-                                background: var(--card-bg-hover);
+                        .brand{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-end;
+                            span{
+                                border-radius: 10px;
+                                font-size: .7rem;
+                                font-family: 'samsung-light';
+                                text-transform: uppercase;
                             }
-                            b{ color: var(--primary); }
+                            span:nth-of-type(1){
+                                margin: 0 .5rem 0 0;
+                            }
                         }
-                        p{ color: var(--text-secondary-color); }
+                        p{ color: var(--text-secondary-color); margin: .5rem 0;}
                         p:nth-of-type(1){
                             display: -webkit-box;
                             -webkit-box-orient: vertical;
                             -webkit-line-clamp: 1;
-                            line-height: 2;
                             overflow: hidden;
                             font-size: .9rem;
                             font-family: 'samsung-bold';
                             text-transform: uppercase;
                         }
                         p:nth-of-type(2){ font-family: 'samsung-light';}
+                        button{
+                            width: 100%;
+                            outline: unset;
+                            border: unset;
+                            padding: .5rem;
+                            background: var(--card-btn-bg);
+                            transition: all .25s;
+                            cursor: pointer;
+                        }
                     }
                 }
             }
