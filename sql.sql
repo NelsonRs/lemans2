@@ -14,13 +14,14 @@ CREATE TABLE IF NOT EXISTS `brand` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 DELETE FROM `brand`;
 INSERT INTO `brand` (`id`, `name`) VALUES
 	(1, 'Otro'),
 	(2, 'Coleman'),
-	(3, 'Igloo');
+	(3, 'Igloo'),
+	(4, 'King Tony');
 
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -39,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `color` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 DELETE FROM `color`;
 INSERT INTO `color` (`id`, `name`) VALUES
@@ -50,7 +51,8 @@ INSERT INTO `color` (`id`, `name`) VALUES
 	(5, 'Metal'),
 	(6, 'Verde'),
 	(7, 'Negro'),
-	(8, 'Rosa');
+	(8, 'Rosa'),
+	(9, 'Blanco');
 
 CREATE TABLE IF NOT EXISTS `kind` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -112,16 +114,29 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `FK_product_color` FOREIGN KEY (`color_id`) REFERENCES `color` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_product_kind` FOREIGN KEY (`kind_id`) REFERENCES `kind` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_product_material` FOREIGN KEY (`material_id`) REFERENCES `material` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 DELETE FROM `product`;
 INSERT INTO `product` (`id`, `cod`, `name`, `price`, `image`, `kind_id`, `brand_id`, `material_id`, `color_id`) VALUES
-	(2, '2000018287', 'Hooligan', 755, 'hooligan-coleman.png', 8, 2, 1, 2),
-	(3, '3000005350', 'Conservadora Cooler XTREM', 464, 'conservadora-coleman.png', 18, 2, 1, 3),
-	(4, '2000013750', 'Conservadora Cooler Bolso', 194, 'conservadora-coleman-bolso.png', 18, 2, 1, 3),
-	(5, '5205A753G', 'Conservadora SQT', 145, 'conservadora-coleman-sqt.png', 18, 2, 1, 4),
-	(6, '2000016474', 'Camp grill deluxe', 115, 'camp-grill-deluxe.png', 8, 2, 2, 5),
-	(7, '2000019645', 'Sleeping bag', 231, 'sleeping-bag-coleman.png', 6, 2, 1, 4);
+	(1, '2000018287', 'Hooligan', 755, 'hooligan-coleman.png', 8, 2, 1, 2),
+	(2, '3000005350', 'Conservadora Cooler XTREM', 464, 'conservadora-coleman.png', 18, 2, 1, 3),
+	(3, '2000013750', 'Conservadora Cooler Bolso', 194, 'conservadora-coleman-bolso.png', 18, 2, 1, 3),
+	(4, '5205A753G', 'Conservadora SQT', 145, 'conservadora-coleman-sqt.png', 18, 2, 1, 4),
+	(5, '2000016474', 'Camp grill deluxe', 115, 'camp-grill-deluxe.png', 8, 2, 2, 5),
+	(6, '2000019645', 'Sleeping bag pink', 231, 'sleeping-bag-coleman.png', 6, 2, 1, 8),
+	(7, '5205A758G', 'Conservadora SQT', 145, 'conservadora-sqt.png', 18, 2, 1, 3),
+	(8, '3000001684', 'Chaleco salvavida', 187, 'chaleco-coleman.png', 18, 2, 1, 3),
+	(9, '2000019647', 'Sleeping bag blue', 292, 'sleeping-bag-blue.png', 6, 2, 1, 3),
+	(10, '2000004410', 'Toldo', 1234, '2000004410.png', 8, 2, 1, 6),
+	(11, '2000007825', 'Tienda para acampar', 1917, '2000007825.png', 8, 2, 1, 6),
+	(12, '00049007', 'Conservadora igloo', 1943, 'conservadora-igloo.png', 18, 3, 1, 9),
+	(13, '00025201', 'Igloo ice block', 63, 'ice-block-large.png', 18, 3, 1, 3),
+	(14, '2000016485', 'Manta de emergencia', 17, '2000016485.png', 18, 3, 1, 5),
+	(15, '1712MR', 'Juego de llaves doble boca', 577, 'set-llaves-combinadas.png', 11, 4, 2, 5),
+	(16, '9033CR', 'Estuche herr. 1/2" 3/8" 1/4"', 2545, 'estuche-herr.png', 11, 4, 2, 5),
+	(17, '87634-7B-G', 'Carro con 7 gabinetes', 7083, 'carro-7-gabinetes.png', 11, 4, 2, 5),
+	(18, '87402', 'Caja de herramientas', 696, 'caja-herramientas-kt.png', 11, 4, 2, 4),
+	(19, '92543MR', 'Set herramientas', 846, 'set-herramientas.jpg', 11, 4, 2, 7);
 
 CREATE TABLE IF NOT EXISTS `rol` (
   `id` int NOT NULL AUTO_INCREMENT,

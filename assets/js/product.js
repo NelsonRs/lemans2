@@ -20,7 +20,7 @@ function getProducts() {
         let row = ""+
           '<div class="card">'+
             '<div class="top">'+
-              '<img src="/assets/img/product/'+product.image+'">'+
+              '<img src="/assets/img/product/'+product.image+'" loading="lazy">'+
             '</div>'+
             '<div class="bottom">'+
               '<div class="brand">'+

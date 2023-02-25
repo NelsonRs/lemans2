@@ -24,6 +24,11 @@
 </head>
 <body>
     <main>
+        <?php
+        $url = $_SERVER['REQUEST_URI'];
+        $url = @array_pop(array_filter(explode('/',"$url")));
+        print_r($url)
+        ?>
         <!-- NAVBAR -->
         <?php include_once $root . '/php/templates/nav.php'; ?>
         <section class="section-products">

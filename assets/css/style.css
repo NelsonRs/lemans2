@@ -26,7 +26,7 @@
   transition: all 0.25s;
 }
 .section-index-hero .col-1 img:hover, .section-index-hero .col-2 img:hover, .section-index-hero .col-3 img:hover {
-  filter: brightness(0.8) contrast(1.1);
+  filter: brightness(0.8) contrast(1.2);
 }
 .section-index-hero .col-1 p, .section-index-hero .col-2 p, .section-index-hero .col-3 p {
   position: absolute;
@@ -63,7 +63,7 @@
   filter: brightness(0.6);
 }
 .section-index-block-1 .b-1 img:hover, .section-index-block-1 .b-2 img:hover, .section-index-block-1 .b-3 img:hover, .section-index-block-1 .b-4 img:hover, .section-index-block-1 .b-5 img:hover, .section-index-block-2 .b-1 img:hover, .section-index-block-2 .b-2 img:hover, .section-index-block-2 .b-3 img:hover, .section-index-block-2 .b-4 img:hover, .section-index-block-2 .b-5 img:hover, .section-index-block-3 .b-1 img:hover, .section-index-block-3 .b-2 img:hover, .section-index-block-3 .b-3 img:hover, .section-index-block-3 .b-4 img:hover, .section-index-block-3 .b-5 img:hover {
-  filter: brightness(0.7);
+  filter: brightness(0.8) contrast(1.2);
 }
 .section-index-block-1 .b-1 p, .section-index-block-2 .b-1 p, .section-index-block-3 .b-1 p {
   font-size: 1.75rem;
