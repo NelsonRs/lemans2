@@ -18,7 +18,7 @@ function getProducts() {
       $("#filters-card").html("");
       $.each(JSON.parse(data), function(key, product){
         let row = ""+
-          '<div class="card">'+
+          '<a href="/'+product.name+'-'+product.id+'" class="card">'+
             '<div class="top">'+
               '<img src="/assets/img/product/'+product.image+'" loading="lazy">'+
             '</div>'+
@@ -30,7 +30,7 @@ function getProducts() {
               '<p>'+product.price+' Bs</p>'+
               '<button>Comprar</button>'+
             '</div>'+
-          '</div>';
+          '</a>';
           $("#filters-card").append(row);
       })
     }

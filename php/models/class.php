@@ -7,15 +7,12 @@ function selectCheckbox($table_name){
     return $result;
 }
 
-// function selectFIlters(){
-//     global $mysqli;
-//     $products = $mysqli->query("SELECT * FROM product");
-//     $product_list = [];
-//     while ($product = $products->fetch_assoc()) {
-//         $product_list[$product['id']] = $product;
-//     }
-//     print_r($product_list);
-// }
+function selectProducts(){
+    global $mysqli;
+    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id ORDER BY P.id ASC");
+    $result = printProducts($result);
+    return $result;
+}
 
 function printCheckbox($result,$table_name){
     global $mysqli;
@@ -53,6 +50,38 @@ function printCheckbox($result,$table_name){
                                         <input class="input_checkbox" name="'.$p.'" type="checkbox" id="'.$table_name.'-checkbox-'.$id.'" value="'.$name.'">
                                         <label for="'.$table_name.'-checkbox-'.$id.'"><span class="filter-title">'.$name.$n_rows.'</span></label>
                                     </li>
+                ';
+        }
+    } else {
+        $html = "<p>Error</p>";
+        return $html;
+    }
+    return $html;
+}
+
+function printProducts($result){
+    $html = "";
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $id = $row['id'];
+            $name = $row['name'];
+            $image = $row['image'];
+            $price = $row['price'];
+            $brand = $row['brand'];
+            $html .= '
+                    <a href="/'.strtolower($name).'-'.$id.'" class="card">
+                        <div class="top">
+                            <img src="/assets/img/product/'.$image.'" loading="lazy">
+                        </div>
+                        <div class="bottom">
+                            <div class="brand">
+                                <span>'.$brand.'</span><span><img src="/assets/svg/easy-credit.svg" alt"Easy Credit"></span>
+                            </div>
+                            <p>'.$name.'</p>
+                            <p>'.$price.' Bs</p>
+                            <button>Comprar</button>
+                        </div>
+                    </a>
                 ';
         }
     } else {

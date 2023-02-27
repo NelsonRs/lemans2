@@ -74,7 +74,9 @@
                     </div>
                 </div>
                 <div class="col-right">
-                    <div class="products" id="filters-card"></div>
+                    <div class="products">
+                        <?=selectProducts()?>
+                    </div>
                 </div>
             </div>
         </section>
