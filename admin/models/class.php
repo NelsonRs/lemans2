@@ -1,5 +1,5 @@
 <?php $url = $_SERVER['DOCUMENT_ROOT'];
-require $url . '/php/models/db.php';
+require $url . '/php/models/class.php';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // INSERT PRODUCT
@@ -11,18 +11,24 @@ function insertProduct($name, $price, $category, $image, $brand, $material, $col
 
     if (!((strpos($type, 'gif') || strpos($type, 'jpeg') || strpos($type, 'webp') || strpos($type, 'png')))) {
       $_SESSION['mensaje'] = 'Solo se admite archivos jpeg, gif, webp';
-    } else {
-      $result = $mysqli->query("INSERT INTO product(name,price,image,kind_id,brand_id,material_id,color_id,cod) VALUES('$name','$price','$image','$category','$brand','$material','$color','$codigo')");
+    } 
+    else {
+      $query = $mysqli->query("INSERT INTO product(name,price,image,kind_id,brand_id,material_id,color_id,cod) VALUES('$name','$price','$image','$category','$brand','$material','$color','$codigo')");
+      $result = $query;
       if ($result) {
         $_SESSION['mensaje'] = 'Se subió correctamente';
-        move_uploaded_file($temp, $url . '/assets/img/product/' . '' . $image);
+        move_uploaded_file($temp, $url . '/assets/img/product/'.$image);
+        $select = selectProductByName($name);
+        // echo'<script>alert("'.print_r($select).'")</script>';
+        mkdir($url."/productos/".getUrl($name).'-'.$select['id']."", 0755);
+        copy("$url/php/templates/template.php","$url/productos/".getUrl($name).'-'.$select['id']."/index.php");
         header('location: ../');
       } else {
         $_SESSION['mensaje'] = 'Ocurrió un error';
       }
     }
   } else {
-    echo '<script type="text/javascript">alert("Ingresa una imagen!");</script>';
+    echo '<script type="text/javascript">alert("Ingresa una imagen!");</>';
   }
 }
 
@@ -55,7 +61,7 @@ function updateImage($image,$id){
     } else {
       $result = $mysqli->query("UPDATE product SET image='$image' WHERE id = $id");
       if ($result) {
-        move_uploaded_file($temp, $url . '/assets/img/product/' . '' . $image);
+        move_uploaded_file($temp, $url . '/assets/img/product/'.$image);
         header('location: ../');
         return $result;
         

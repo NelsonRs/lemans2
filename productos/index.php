@@ -1,4 +1,4 @@
-<?php $root = $_SERVER['DOCUMENT_ROOT']; require_once $root."/php/models/class.php";?>
+<?php $root = $_SERVER['DOCUMENT_ROOT']; require_once $root."/php/models/class.php"; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,7 +27,7 @@
         <?php
         $url = $_SERVER['REQUEST_URI'];
         $url = @array_pop(array_filter(explode('/',"$url")));
-        print_r($url)
+        // print_r($url)
         ?>
         <!-- NAVBAR -->
         <?php include_once $root . '/php/templates/nav.php'; ?>

@@ -7,11 +7,39 @@ function selectCheckbox($table_name){
     return $result;
 }
 
+function selectProductByName($name){
+    global $mysqli;
+    $result = $mysqli->query("SELECT id,name FROM product WHERE name='$name'");
+    $result = $result->fetch_array();
+    return $result;
+}
+function selectProductById($id){
+    global $mysqli;
+    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id WHERE P.id='$id'");
+    $result = $result->fetch_assoc();
+    return $result;
+}
+
 function selectProducts(){
     global $mysqli;
     $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id ORDER BY P.id ASC");
     $result = printProducts($result);
     return $result;
+}
+
+
+function getUrl($string_in){
+	$string_output=mb_strtolower($string_in, 'UTF-8');
+	//caracteres inválidos en una url
+	$find=array('¥','µ','à','á','â','ã','ä','å','æ','ç','è','é','ê','ë','ì','í','î','ï','ð','ñ','ò','ó','ô','õ','ö','ø','ù','ú','û','ü','ý','ÿ','\'','"');
+	//traduccion caracteres válidos
+	$repl=array('-','-','a','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','ny','o','o','o','o','o','o','u','u','u','u','y','y','','' );
+	$string_output=str_replace($find, $repl, $string_output);
+	//más caracteres inválidos en una url que sustituiremos por guión
+	$find=array(' ', '&','%','$','·','!','(',')','?','¿','¡',':','+','*','\n','\r\n', '\\', '´', '`', '¨', ']', '[');
+	$string_output=str_replace($find, '-', $string_output);
+	$string_output=str_replace('--', '', $string_output);
+	return $string_output;
 }
 
 function printCheckbox($result,$table_name){
@@ -69,7 +97,7 @@ function printProducts($result){
             $price = $row['price'];
             $brand = $row['brand'];
             $html .= '
-                    <a href="/'.strtolower($name).'-'.$id.'" class="card">
+                    <a href="/productos/'.getUrl($name).'-'.$id.'" class="card">
                         <div class="top">
                             <img src="/assets/img/product/'.$image.'" loading="lazy">
                         </div>

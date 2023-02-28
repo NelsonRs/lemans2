@@ -31,7 +31,7 @@
 .section-index-hero .col-1 p, .section-index-hero .col-2 p, .section-index-hero .col-3 p {
   position: absolute;
   color: var(--white);
-  font-family: "samsung-bold";
+  font-weight: 600;
   font-size: 2rem;
   left: 1.5rem;
   bottom: 1.5rem;
@@ -52,7 +52,7 @@
   left: 1.5rem;
   bottom: 1.5rem;
   color: var(--white);
-  font-family: "samsung-bold";
+  font-weight: 600;
 }
 .section-index-block-1 .b-1 img, .section-index-block-1 .b-2 img, .section-index-block-1 .b-3 img, .section-index-block-1 .b-4 img, .section-index-block-1 .b-5 img, .section-index-block-2 .b-1 img, .section-index-block-2 .b-2 img, .section-index-block-2 .b-3 img, .section-index-block-2 .b-4 img, .section-index-block-2 .b-5 img, .section-index-block-3 .b-1 img, .section-index-block-3 .b-2 img, .section-index-block-3 .b-3 img, .section-index-block-3 .b-4 img, .section-index-block-3 .b-5 img {
   width: 100%;
@@ -68,7 +68,7 @@
 .section-index-block-1 .b-1 p, .section-index-block-2 .b-1 p, .section-index-block-3 .b-1 p {
   font-size: 1.75rem;
   line-height: 2.5;
-  font-family: "samsung-light";
+  font-weight: 300;
 }
 
 .section-index-block-1, .section-index-block-3 {
@@ -98,7 +98,7 @@
 }
 .section-index-block-1 .b-2 h2, .section-index-block-3 .b-2 h2 {
   position: absolute;
-  font-family: "samsung-bold";
+  font-weight: 600;
   text-align: end;
   font-size: 3rem;
   bottom: 0;
@@ -144,7 +144,7 @@
 }
 .section-index-block-2 .b-2 h2 {
   position: absolute;
-  font-family: "samsung-bold";
+  font-weight: 600;
   text-align: end;
   font-size: 3rem;
   bottom: 0;
@@ -168,7 +168,7 @@
 }
 .section-office-index h1 {
   font-size: 2rem;
-  font-family: "samsung-bold";
+  font-weight: 600;
   padding: 0 2rem 2rem;
   border-bottom: 1px solid var(--border-color);
 }
@@ -364,7 +364,7 @@
 }
 .section-products .grid .col-left .filter .collapsible h2 {
   font-size: 1rem;
-  font-family: "samsung-medium";
+  font-weight: 400;
 }
 .section-products .grid .col-left .filter .collapsible.active::after {
   content: "−";
@@ -393,7 +393,7 @@
 }
 .section-products .grid .col-left .filter .content.active ul * {
   font-size: 1rem;
-  font-family: "samsung-light";
+  font-weight: 300;
 }
 .section-products .grid .col-left .filter .content label {
   cursor: pointer;
@@ -495,7 +495,7 @@
 .section-products .grid .col-right .products .card .bottom .brand span {
   border-radius: 10px;
   font-size: 0.7rem;
-  font-family: "samsung-light";
+  font-weight: 300;
   text-transform: uppercase;
 }
 .section-products .grid .col-right .products .card .bottom .brand span:nth-of-type(1) {
@@ -511,11 +511,11 @@
   -webkit-line-clamp: 1;
   overflow: hidden;
   font-size: 0.9rem;
-  font-family: "samsung-bold";
+  font-weight: 600;
   text-transform: uppercase;
 }
 .section-products .grid .col-right .products .card .bottom p:nth-of-type(2) {
-  font-family: "samsung-light";
+  font-weight: 300;
 }
 .section-products .grid .col-right .products .card .bottom button {
   width: 100%;
