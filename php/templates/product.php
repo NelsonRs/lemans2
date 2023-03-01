@@ -3,7 +3,7 @@
     $url = @array_pop(array_filter(explode('/',"$url")));
     $end = (explode('-',$url));
     $id = end($end);
-    $product = selectProductById($id);
+    $product = selectProductDetailById($id);
     // print_r($product);
 ?>
 <!DOCTYPE html>
@@ -34,6 +34,36 @@
         <!-- NAVBAR -->
         <?php include_once $root . '/php/templates/nav.php'; ?>
         
+        <div class="breadcrumb">
+            <a href="/">Inicio</a>
+            <i>&nbsp;/&nbsp;</i>
+            <a href="/productos/">Productos</a>
+            <i>&nbsp;/&nbsp;</i>
+            <p><?=$product['name']?></p>
+        </div>
+
+        <section class="section-product-detail">
+            <div class="product-detail">
+                <div class="left-col">
+                    <img src="/assets/img/product/<?=$product['image']?>" alt="<?=$product['image']?>" title="<?=$product['name']?>">
+                </div>
+                <div class="right-col">
+                    <div class="title">
+                        <h1><?=$product['name']?></h1>
+                        <h2><?=$product['brand']?></h2>
+                    </div>
+                    <p class="price"><?=$product['price']?> Bs</p>
+                    <p class="easy-credit"><a href="#">Disponible para comprar con tu tarjeta<i>&nbsp;&nbsp;<img src="/assets/svg/easy-credit.svg" alt="Easy Credit" title="Easy Credit"></i></a></p>
+                    <div class="description">
+                        <p>SKU:&nbsp;<b><?=$product['cod']?></b></p>
+                        <p>Material:&nbsp;<b><?=$product['material']?></b></p>
+                        <p>Color:&nbsp;<b><?=$product['color']?></b></p>
+                    </div>
+                    <button>Comprar</button>
+                    <button>Easy Credit</button>
+                </div>
+            </div>
+        </section>
 
     </main>
     <!-- JS -->

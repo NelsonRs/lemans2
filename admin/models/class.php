@@ -18,7 +18,7 @@ function insertProduct($name, $price, $category, $image, $brand, $material, $col
       if ($result) {
         $_SESSION['mensaje'] = 'Se subió correctamente';
         move_uploaded_file($temp, $url . '/assets/img/product/'.$image);
-        $select = selectProductByName($name);
+        $select = selectProductByCod($codigo);
         // echo'<script>alert("'.print_r($select).'")</script>';
         mkdir($url."/productos/".getUrl($name).'-'.$select['id']."", 0755);
         copy("$url/php/templates/template.php","$url/productos/".getUrl($name).'-'.$select['id']."/index.php");

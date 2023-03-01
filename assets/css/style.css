@@ -455,7 +455,7 @@
   filter: brightness(1.1) contrast(1.1);
 }
 .section-products .grid .col-right .products .card:hover .bottom button {
-  background: var(--border-color);
+  background: #D9D9D9;
 }
 .section-products .grid .col-right .products .card .top {
   transition: all 0.25s;
@@ -519,10 +519,104 @@
 }
 .section-products .grid .col-right .products .card .bottom button {
   width: 100%;
-  outline: unset;
-  border: unset;
   padding: 0.5rem;
-  background: var(--card-btn-bg);
+  border: 1px solid #dadada;
+  background: #EEEEEE;
   transition: all 0.25s;
   cursor: pointer;
+}
+
+.breadcrumb {
+  padding: 2rem 2rem 0;
+}
+.breadcrumb * {
+  display: inline;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.section-product-detail {
+  padding: 2rem 2rem 0;
+}
+.section-product-detail .product-detail {
+  display: flex;
+}
+.section-product-detail .product-detail .left-col {
+  width: 55%;
+  display: inherit;
+  justify-content: center;
+  align-items: center;
+  background: var(--product-detail-bg);
+}
+.section-product-detail .product-detail .left-col img {
+  max-width: 70%;
+  max-height: 70%;
+  padding: 2rem;
+  filter: drop-shadow(0px 0px 4px var(--border-color));
+}
+.section-product-detail .product-detail .right-col {
+  width: 45%;
+  padding: 0 0 0 2rem;
+}
+.section-product-detail .product-detail .right-col .title {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.section-product-detail .product-detail .right-col .title h1 {
+  font-size: 1.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+}
+.section-product-detail .product-detail .right-col .title h2 {
+  font-weight: 300;
+}
+.section-product-detail .product-detail .right-col .price {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+.section-product-detail .product-detail .right-col .easy-credit {
+  padding: 0.5rem 0 1.75rem;
+  font-weight: 400;
+}
+.section-product-detail .product-detail .right-col .easy-credit * {
+  color: #146C43;
+}
+.section-product-detail .product-detail .right-col .easy-credit:hover {
+  text-decoration: underline;
+}
+.section-product-detail .product-detail .right-col .easy-credit img {
+  width: 15%;
+}
+.section-product-detail .product-detail .right-col .description {
+  padding: 0 0 1rem;
+}
+.section-product-detail .product-detail .right-col .description p {
+  padding: 0.5rem 0;
+  font-weight: 300;
+}
+.section-product-detail .product-detail .right-col .description p b {
+  font-weight: 400;
+}
+.section-product-detail .product-detail .right-col button {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.section-product-detail .product-detail .right-col button:nth-of-type(1) {
+  background: #EEEEEE;
+  border: 1px solid #dadada;
+}
+.section-product-detail .product-detail .right-col button:nth-of-type(1):hover {
+  background: #D9D9D9;
+}
+.section-product-detail .product-detail .right-col button:nth-of-type(2) {
+  background: var(--black);
+  color: #EEC92C;
+}
+.section-product-detail .product-detail .right-col button:nth-of-type(2):hover {
+  background: #1c1c1c;
 }/*# sourceMappingURL=style.css.map */

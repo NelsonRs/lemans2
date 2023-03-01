@@ -13,16 +13,22 @@ function selectProductByName($name){
     $result = $result->fetch_array();
     return $result;
 }
-function selectProductById($id){
+function selectProductDetailById($id){
     global $mysqli;
-    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id WHERE P.id='$id'");
+    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,P.cod,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id WHERE P.id='$id'");
+    $result = $result->fetch_assoc();
+    return $result;
+}
+function selectProductByCod($cod){
+    global $mysqli;
+    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,P.cod,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id WHERE P.cod='$cod'");
     $result = $result->fetch_assoc();
     return $result;
 }
 
 function selectProducts(){
     global $mysqli;
-    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id ORDER BY P.id ASC");
+    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id ORDER BY P.name ASC");
     $result = printProducts($result);
     return $result;
 }
