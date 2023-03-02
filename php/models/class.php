@@ -15,20 +15,20 @@ function selectProductByName($name){
 }
 function selectProductDetailById($id){
     global $mysqli;
-    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,P.cod,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id WHERE P.id='$id'");
+    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.cod,CO.name AS'collection',K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN collection CO ON CO.id = P.collection_id WHERE P.id='$id'");
     $result = $result->fetch_assoc();
     return $result;
 }
 function selectProductByCod($cod){
     global $mysqli;
-    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,P.cod,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id WHERE P.cod='$cod'");
+    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.cod,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id WHERE P.cod='$cod'");
     $result = $result->fetch_assoc();
     return $result;
 }
 
 function selectProducts(){
     global $mysqli;
-    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id ORDER BY P.name ASC");
+    $result = $mysqli->query("SELECT P.id,P.name,P.cod,P.price,K.name AS'kind',C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id ORDER BY P.name ASC");
     $result = printProducts($result);
     return $result;
 }
@@ -71,7 +71,7 @@ function printCheckbox($result,$table_name){
            };
             $id = $row['id'];
             $name = $row['name'];
-            $n_rows = $mysqli->query("SELECT P.id,P.name,P.price,P.image,B.name AS'brand',C.name AS'color',M.name AS'material',K.name AS'kind' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id WHERE $t_name='$name'");
+            $n_rows = $mysqli->query("SELECT P.id,P.name,P.cod AS'cod',P.price,B.name AS'brand',C.name AS'color',M.name AS'material',K.name AS'kind' FROM product P INNER JOIN kind K ON K.id = P.kind_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id WHERE $t_name='$name'");
             $n_rows = $n_rows->num_rows;
             if ($n_rows!=0) {
                 $n_rows = " <b>•</b> ($n_rows)";
@@ -99,13 +99,13 @@ function printProducts($result){
         while ($row = $result->fetch_assoc()) {
             $id = $row['id'];
             $name = $row['name'];
-            $image = $row['image'];
             $price = $row['price'];
+            $cod = $row['cod'];
             $brand = $row['brand'];
             $html .= '
                     <a href="/productos/'.getUrl($name).'-'.$id.'" class="card">
                         <div class="top">
-                            <img src="/assets/img/product/'.$image.'" loading="lazy">
+                            <img src="/assets/img/product/'.getUrl($name).'-'.$cod.'.png" loading="lazy">
                         </div>
                         <div class="bottom">
                             <div class="brand">

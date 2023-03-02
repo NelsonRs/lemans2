@@ -33,7 +33,7 @@ require $url.'/admin/models/login/validation.php';
         <h2>Registrar Producto</h2>
         <form action="/admin/models/query.php" method="post" enctype="multipart/form-data">
             <input class="input-register" placeholder="Nombre" type="text" name="name" required><br>
-            <input class="input-register" placeholder="Precio" type="number" name="price" required><br>
+            <input class="input-register" placeholder="Precio" type="number" name="price" step="0.01" required><br>
             <input class="input-register" placeholder="Código" type="text" name="codigo" required><br>
             <select class="select-register" required name="category">
                 <option value="" hidden>Selecciona una categoría</option>
@@ -50,6 +50,10 @@ require $url.'/admin/models/login/validation.php';
             <select class="select-register" name="material">
                 <option value=1 selected hidden>Selecciona un material</option><?php selectAll('material') ?>
             </select><span class="span-register" id="addMaterial">+</span><br>
+
+            <select class="select-register" name="collection">
+                <option value=1 selected hidden>Selecciona una colección</option><?php selectAll('collection') ?>
+            </select><span class="span-register" id="addCollection">+</span><br>
 
             <select class="select-register" name="color">
                 <option value=1 selected hidden>Selecciona un color</option><?php selectAll('color') ?>
@@ -71,6 +75,7 @@ require $url.'/admin/models/login/validation.php';
                     <th>Marca</th>
                     <th>Material</th>
                     <th>Color</th>
+                    <th>Colección</th>
                     <th>Acción</th>
                 </tr>
             </thead>

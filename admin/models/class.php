@@ -3,7 +3,7 @@ require $url . '/php/models/class.php';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // INSERT PRODUCT
-function insertProduct($name, $price, $category, $image, $brand, $material, $color, $codigo){
+function insertProduct($name, $price, $category, $image, $brand, $material, $color, $codigo,$collection){
   global $url, $mysqli;
   if (isset($image) && $image != "") {
     $type = $_FILES['image']['type'];
@@ -13,13 +13,13 @@ function insertProduct($name, $price, $category, $image, $brand, $material, $col
       $_SESSION['mensaje'] = 'Solo se admite archivos jpeg, gif, webp';
     } 
     else {
-      $query = $mysqli->query("INSERT INTO product(name,price,image,kind_id,brand_id,material_id,color_id,cod) VALUES('$name','$price','$image','$category','$brand','$material','$color','$codigo')");
+      $query = $mysqli->query("INSERT INTO product(name,price,kind_id,brand_id,material_id,color_id,cod,collection_id) VALUES('$name','$price','$category','$brand','$material','$color','$codigo','$collection')");
       $result = $query;
       if ($result) {
         $_SESSION['mensaje'] = 'Se subió correctamente';
         move_uploaded_file($temp, $url . '/assets/img/product/'.$image);
+        rename($url . '/assets/img/product/'.$image,$url . '/assets/img/product/'.getUrl($name).'-'.$codigo.'.png');
         $select = selectProductByCod($codigo);
-        // echo'<script>alert("'.print_r($select).'")</script>';
         mkdir($url."/productos/".getUrl($name).'-'.$select['id']."", 0755);
         copy("$url/php/templates/template.php","$url/productos/".getUrl($name).'-'.$select['id']."/index.php");
         header('location: ../');
@@ -47,6 +47,8 @@ function insertAllOptions($val, $type)
 // UPDATE
 function updateProduct($codigo, $name, $price, $category, $brand, $material, $color, $id){
   global $mysqli, $url;
+  $old = selectProductDetailById($id);
+  rename($url.'/assets/img/product/'.getUrl($old['name']).'-'.$old['cod'].'.png',$url . '/assets/img/product/'.getUrl($name).'-'.$codigo.'.png');
   $result = $mysqli->query("UPDATE product SET cod='$codigo', name='$name', price=$price, kind_id=$category, brand_id=$brand, material_id=$material, color_id=$color WHERE id = $id");
   header('location: ../');
 }
@@ -105,14 +107,13 @@ function selectById($table, $name)
 function selectAllProduct()
 {
   global $mysqli;
-  $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,P.cod AS 'codigo',K.name AS 'category',B.name AS 'brand',M.name AS 'material',C.name AS 'color' FROM product P INNER JOIN kind K  ON K.id = P.kind_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN color C  ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id");
+  $result = $mysqli->query("SELECT P.id,P.name,P.price,P.cod AS 'codigo',CO.name AS 'collection',K.name AS 'category',B.name AS 'brand',M.name AS 'material',C.name AS 'color' FROM product P INNER JOIN kind K  ON K.id = P.kind_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN color C  ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN collection CO ON CO.id = P.collection_id");
   $result = showProduct($result);
   return $result;
 }
-function selectProductById($id)
-{
+function selectProductById($id){
   global $mysqli;
-  $result = $mysqli->query("SELECT P.id,P.name,P.price,P.image,P.cod AS 'codigo',K.name AS 'category',B.name AS 'brand',M.name AS 'material',C.name AS 'color' FROM product P INNER JOIN kind K  ON K.id = P.kind_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN color C  ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id WHERE P.id=$id");
+  $result = $mysqli->query("SELECT P.id,P.name,P.price,P.cod AS 'codigo',K.name AS 'category',B.name AS 'brand',M.name AS 'material',C.name AS 'color' FROM product P INNER JOIN kind K  ON K.id = P.kind_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN color C  ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id WHERE P.id=$id");
   $result = showProductObj($result);
   return $result;
 }
@@ -144,7 +145,7 @@ function showProduct($obj)
   while ($row = $obj->fetch_assoc()) {
     $salida .=
                 '<tr>
-                  <td><img style="max-width: 128px;max-height: 128px;display:flex;margin:auto"  src="../../assets/img/product/' . $row['image'] . '"/></td>
+                  <td><img style="max-width: 128px;max-height: 128px;display:flex;margin:auto"  src="../../assets/img/product/' . getUrl($row['name']).'-'.$row['codigo'].'.png"/></td>
                   <td>' . $row['name'] . '</td>
                   <td>' . $row['price'] . '</td>
                   <td>' . $row['category'] . '</td>
@@ -152,6 +153,7 @@ function showProduct($obj)
                   <td>' . $row['brand'] . '</td>
                   <td>' . $row['material'] . '</td>
                   <td>' . $row['color'] . '</td>
+                  <td>' . $row['collection'] . '</td>
                   <td><form action="/admin/views/editProduct.php" method="post"><button class="btn-edit" type="submit" name="id" value="' . $row['id'] . '" id="editProduct">Editar</button></form><button class="btn-edit2" value="' . $row['id'] . '" id="deleteProduct" >Eliminar</button><button id="updateImage" class="btn-edit" value="' . $row['id'] . '" type="submit">Cambiar Imagen</button></td>
                 </tr>
                 
@@ -166,13 +168,12 @@ function showProductObj($obj)
     $id = $row['id'];
     $name = $row['name'];
     $price = $row['price'];
-    $image = $row['image'];
     $category = $row['category'];
     $cod = $row['codigo'];
     $brand = $row['brand'];
     $material = $row['material'];
     $color = $row['color'];
-    $salida = [$id, $name, $price, $cod, $category, $brand, $material, $color, $image];
+    $salida = [$id, $name, $price, $cod, $category, $brand, $material, $color];
   }
   return $salida;
 }

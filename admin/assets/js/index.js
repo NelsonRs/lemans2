@@ -41,6 +41,9 @@ $(document).ready(function() {
                 data: 'color'
             },
             {
+                data: 'collection'
+            },
+            {
                 data: 'actions'
             }
         ]

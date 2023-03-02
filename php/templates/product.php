@@ -45,7 +45,7 @@
         <section class="section-product-detail">
             <div class="product-detail">
                 <div class="left-col">
-                    <img src="/assets/img/product/<?=$product['image']?>" alt="<?=$product['image']?>" title="<?=$product['name']?>">
+                    <img src="/assets/img/product/<?=getUrl($product['name']).'-'.$product['cod']?>.png" alt="<?=$product['name']?>" title="<?=$product['name']?>">
                 </div>
                 <div class="right-col">
                     <div class="title">
@@ -56,8 +56,9 @@
                     <p class="easy-credit"><a href="#">Disponible para comprar con tu tarjeta<i>&nbsp;&nbsp;<img src="/assets/svg/easy-credit.svg" alt="Easy Credit" title="Easy Credit"></i></a></p>
                     <div class="description">
                         <p>SKU:&nbsp;<b><?=$product['cod']?></b></p>
-                        <p>Material:&nbsp;<b><?=$product['material']?></b></p>
-                        <p>Color:&nbsp;<b><?=$product['color']?></b></p>
+                        <?php if($product['collection']=='Otro') {} else{ echo "<p>Colección:&nbsp;<b>".$product['collection']."</b></p>";}?>
+                        <?php if($product['color']=='Otro') {} else{ echo "<p>Color:&nbsp;<b>".$product['color']."</b></p>";}?>
+                        <?php if($product['material']=='Otro') {} else{ echo "<p>Material:&nbsp;<b>".$product['material']."</b></p>";}?>
                     </div>
                     <button>Comprar</button>
                     <button>Easy Credit</button>

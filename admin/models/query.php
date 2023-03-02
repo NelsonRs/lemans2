@@ -10,7 +10,8 @@ if (isset($_POST['saveProduct'])) {
     $material = $_POST['material'];
     $color = $_POST['color'];
     $codigo = $_POST['codigo'];
-    insertProduct($name,$price,$category,$image,$brand,$material,$color,$codigo);
+    $collection = $_POST['collection'];
+    insertProduct($name,$price,$category,$image,$brand,$material,$color,$codigo,$collection);
 }
 
 
