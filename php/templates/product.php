@@ -36,9 +36,9 @@
         
         <div class="breadcrumb">
             <a href="/">Inicio</a>
-            <i>&nbsp;/&nbsp;</i>
+            <i>&nbsp;•&nbsp;</i>
             <a href="/productos/">Productos</a>
-            <i>&nbsp;/&nbsp;</i>
+            <i>&nbsp;•&nbsp;</i>
             <p><?=$product['name']?></p>
         </div>
 

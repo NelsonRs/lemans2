@@ -395,7 +395,7 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        height: 65%;
+                        height: 50%;
                         &::before{
                             transition: all .25s;
                             position: absolute;
@@ -415,7 +415,7 @@
                     }
                     .bottom{
                         box-sizing: border-box;
-                        height: 35%;
+                        height: 50%;
                         padding: 1rem 0;
                         .brand{
                             display: flex;
@@ -460,28 +460,35 @@
 // D E T A L L E
 
 .breadcrumb{
+    display: flex;
+    align-items: center ;
     padding: 2rem 2rem 0;
     *{  
         display: inline;
-        font-size: .9rem;
+        font-size: .8rem;
         font-weight: 300;
     }
     a{
+        font-weight: 400;
         &:hover{
             text-decoration: underline;
         }
     }
+    i{
+        color: var(--primary);
+        font-size: 1.5rem;
+        font-style: unset;
+    }
 }
 
 .section-product-detail{
-    padding: 2rem 2rem 0;
+    padding: 1rem 2rem 0;
     .product-detail{
         display: flex;
         .left-col{
             width: 55%;
             display: inherit;
             justify-content: center;
-            align-items: center;
             background: var(--product-detail-bg);
             img{
                 max-width: 85%;

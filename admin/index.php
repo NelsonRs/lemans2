@@ -52,7 +52,7 @@ require $url.'/admin/models/login/validation.php';
             </select><span class="span-register" id="addMaterial">+</span><br>
 
             <select class="select-register" name="collection">
-                <option value=1 selected hidden>Selecciona una colección</option><?php selectAll('collection') ?>
+                <option value=10 selected hidden>Selecciona una colección</option><?php selectAll('collection') ?>
             </select><span class="span-register" id="addCollection">+</span><br>
 
             <select class="select-register" name="color">
