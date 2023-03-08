@@ -1,4 +1,10 @@
-<?php $root = $_SERVER['DOCUMENT_ROOT']; require_once $root."/php/models/class.php"; ?>
+<?php 
+    $root = $_SERVER['DOCUMENT_ROOT']; 
+    require_once $root."/php/models/class.php"; 
+    $url = $_SERVER['REQUEST_URI'];
+    $url = @array_pop(array_filter(explode('/',"$url")));
+    $url = str_replace("-"," ",$url);
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,15 +30,11 @@
 </head>
 <body>
     <main>
-        <?php
-            $url = $_SERVER['REQUEST_URI'];
-            $url = @array_pop(array_filter(explode('/',"$url")));
-        ?>
         <!-- NAVBAR -->
         <?php include_once $root . '/php/templates/nav.php'; ?>
         <section class="section-products">
             <div class="search">
-                <h1>Todos los Productos</h1>
+                <h1><?=strtoupper($url)?></h1>
                 <form action="#" method="post">
                     <input type="search" name="search" id="search" placeholder="Buscar">
                 </form>
@@ -74,7 +76,7 @@
                 </div>
                 <div class="col-right">
                     <div class="products">
-                        <?=selectProducts()?>
+                        <?=selectProductByUrl($url)?>
                     </div>
                 </div>
             </div>
@@ -82,6 +84,7 @@
     </main>
     <!-- JS -->
     <?php include_once $root.'/php/templates/head/js.php'; ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="<?php $root?>/assets/js/product.js"></script>
 </body>
 </html>

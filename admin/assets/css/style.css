@@ -1,30 +1,78 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+:root {
+  --black:#303030;
+  --white:#F2F2F2;
+  --primary:#CE111B;
+  --secondary:#F2F2F2;
+  --on-secondary:#EEEEEE;
+  --tertiary:#a1a1a1;
+  --quaternary:#505050;
+}
+
+html[data-theme=light] {
+  --bg:var(--white);
+  --card-bg:var(--on-secondary);
+  --card-bg-hover:var(--secondary);
+  --card-btn-bg:#cfcfcf;
+  --text-color:var(--black);
+  --text-secondary-color:var(--quaternary);
+  --border-color:var(--tertiary);
+  --border-color-hover:var(--black);
+  --logo-text:var(--primary);
+  --product-detail-bg:#EEEEEE;
+}
+
+html[data-theme=dark] {
+  --bg:var(--black);
+  --card-bg:var(--quaternary);
+  --card-bg-hover:var(--tertiary);
+  --text-color:var(--white);
+  --text-secondary-color:var(--secondary);
+  --border-color:var(--quaternary);
+  --border-color-hover:var(--secondary);
+  --logo-text:var(--white);
+}
+
+@font-face {
+  font-family: "samsung-thin";
+  src: url(/assets/fonts/SamsungSans-Thin.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: "samsung-light";
+  src: url(/assets/fonts/SamsungSans-Light.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: "samsung-regular";
+  src: url(/assets/fonts/SamsungSans-Regular.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: "samsung-medium";
+  src: url(/assets/fonts/SamsungSans-Medium.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: "samsung-bold";
+  src: url(/assets/fonts/SamsungSans-Bold.ttf);
+  font-display: swap;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
 ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot,
 thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section,
-summary, time, mark, audio, video {
+summary, time, mark, audio, video, button {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: small;
-  color: #303030;
+  font-size: 100%;
   text-decoration: none;
+  font-weight: unset;
+  font-family: "Roboto";
+  -webkit-font-smoothing: antialiased;
+  font-smooth: antialiased;
   vertical-align: baseline;
-  font-family: "Open Sans" !important;
-}
-html::-moz-selection, body::-moz-selection, div::-moz-selection, span::-moz-selection, applet::-moz-selection, object::-moz-selection, iframe::-moz-selection, h1::-moz-selection, h2::-moz-selection, h3::-moz-selection, h4::-moz-selection, h5::-moz-selection, h6::-moz-selection, p::-moz-selection, blockquote::-moz-selection, pre::-moz-selection, a::-moz-selection, abbr::-moz-selection, acronym::-moz-selection, address::-moz-selection, big::-moz-selection, cite::-moz-selection, code::-moz-selection, del::-moz-selection, dfn::-moz-selection, em::-moz-selection, img::-moz-selection, ins::-moz-selection, kbd::-moz-selection, q::-moz-selection, s::-moz-selection, samp::-moz-selection, small::-moz-selection, strike::-moz-selection, strong::-moz-selection, sub::-moz-selection, sup::-moz-selection, tt::-moz-selection, var::-moz-selection, b::-moz-selection, u::-moz-selection, i::-moz-selection, center::-moz-selection, dl::-moz-selection, dt::-moz-selection, dd::-moz-selection, ol::-moz-selection, ul::-moz-selection, li::-moz-selection, fieldset::-moz-selection, form::-moz-selection, label::-moz-selection, legend::-moz-selection, table::-moz-selection, caption::-moz-selection, tbody::-moz-selection, tfoot::-moz-selection, thead::-moz-selection, tr::-moz-selection, th::-moz-selection, td::-moz-selection, article::-moz-selection, aside::-moz-selection, canvas::-moz-selection, details::-moz-selection, embed::-moz-selection, figure::-moz-selection, figcaption::-moz-selection, footer::-moz-selection, header::-moz-selection, hgroup::-moz-selection, menu::-moz-selection, nav::-moz-selection, output::-moz-selection, ruby::-moz-selection, section::-moz-selection, summary::-moz-selection, time::-moz-selection, mark::-moz-selection, audio::-moz-selection, video::-moz-selection {
-  background-color: #303030;
-  color: white;
-}
-html::selection, body::selection, div::selection, span::selection, applet::selection, object::selection, iframe::selection,
-h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection,
-p::selection, blockquote::selection, pre::selection, a::selection, abbr::selection, acronym::selection, address::selection, big::selection, cite::selection, code::selection, del::selection, dfn::selection, em::selection, img::selection,
-ins::selection, kbd::selection, q::selection, s::selection, samp::selection, small::selection, strike::selection, strong::selection, sub::selection, sup::selection, tt::selection, var::selection, b::selection, u::selection, i::selection, center::selection, dl::selection, dt::selection, dd::selection, ol::selection, ul::selection, li::selection, fieldset::selection, form::selection, label::selection, legend::selection, table::selection, caption::selection, tbody::selection, tfoot::selection,
-thead::selection, tr::selection, th::selection, td::selection, article::selection, aside::selection, canvas::selection, details::selection, embed::selection, figure::selection, figcaption::selection, footer::selection, header::selection, hgroup::selection, menu::selection, nav::selection, output::selection, ruby::selection, section::selection,
-summary::selection, time::selection, mark::selection, audio::selection, video::selection {
-  background-color: #303030;
-  color: white;
+  color: var(--text-color);
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -53,50 +101,125 @@ table {
   border-spacing: 0;
 }
 
-html, body {
+html {
   width: 100%;
-  margin: 0;
 }
 
-.nav {
-  top: 0;
-  position: sticky;
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  background: var(--bg);
+  transition: background 0.25s;
 }
-.nav .nav-ul, .nav li {
+body * {
+  transition: color 0.5s;
+}
+
+html::-webkit-scrollbar {
+  width: 5px;
+}
+html::-webkit-scrollbar-track {
+  background: var(--card-bg);
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--text-color);
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--card-bg-hover);
+}
+html::-webkit-scrollbar-thumb:active {
+  background: var(--black);
+}
+
+nav {
   display: flex;
-}
-.nav .nav-ul {
-  padding: 1.5rem 5rem;
-  background: white;
-}
-.nav .nav-ul li:nth-of-type(n) {
+  justify-content: space-between;
   align-items: center;
-  width: 50%;
-  font-weight: 600;
+  padding: 0.75rem 2rem;
 }
-.nav .nav-ul li:nth-of-type(n) a {
-  background: hsl(0, 0%, 98%);
-  padding: 0.5rem 2rem;
-  border: hsl(0, 0%, 95%) 1px solid;
-  border-radius: 0.35rem;
-  margin: 0 1rem;
+nav .nav-logo img {
+  width: 80%;
 }
-.nav .nav-ul li:nth-of-type(n) a:nth-of-type(1) {
-  background: hsl(0, 0%, 100%);
-  border: none;
-  cursor: auto;
+nav .nav-item a {
+  font-size: 0.8rem;
 }
-.nav .nav-ul li:nth-of-type(n) a:nth-of-type(1):hover {
-  color: #303030;
+nav .nav-item a:nth-of-type(2) {
+  margin: 0 0 0 2rem;
 }
-.nav .nav-ul li:nth-of-type(n) a:hover:nth-of-type(2) {
-  color: #303030;
-  background: hsl(0, 0%, 95%);
-  border: hsl(0, 0%, 50%) 1px solid;
+nav .nav-item a:nth-of-type(2):hover {
+  text-decoration: underline;
 }
-.nav .nav-ul li:nth-of-type(1) {
-  justify-content: flex-start;
+
+.section-register {
+  padding: 1rem 2rem 0;
 }
-.nav .nav-ul li:nth-of-type(2) {
-  justify-content: flex-end;
+.section-register h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1rem 0 1rem;
+}
+.section-register form .col {
+  display: flex;
+  justify-content: space-between;
+}
+.section-register form .col .col-item {
+  position: relative;
+  width: 49.5%;
+  box-sizing: border-box;
+  display: inherit;
+  flex-direction: column;
+}
+.section-register form .col .col-item i {
+  color: var(--primary);
+  font-size: 1.25rem;
+  font-style: unset;
+  line-height: 0;
+}
+.section-register form .col .col-item input, .section-register form .col .col-item select {
+  border: 1px solid var(--border-color);
+  outline: unset;
+  background: #EEEEEE;
+  padding: 0.5rem;
+  height: 35px;
+  color: var(--text-color);
+  transition: border 0.25s;
+  box-sizing: border-box;
+  font-family: "Roboto";
+  font-weight: 300;
+}
+.section-register form .col .col-item input::-moz-placeholder, .section-register form .col .col-item select::-moz-placeholder {
+  color: #BBBBBB;
+}
+.section-register form .col .col-item input::placeholder, .section-register form .col .col-item select::placeholder {
+  color: #BBBBBB;
+}
+.section-register form .col .col-item input::-webkit-file-upload-button, .section-register form .col .col-item select::-webkit-file-upload-button {
+  background: unset;
+  outline: unset;
+  border: unset;
+  border-right: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+.section-register form .col .col-item input:hover, .section-register form .col .col-item input:focus-visible, .section-register form .col .col-item select:hover, .section-register form .col .col-item select:focus-visible {
+  border-color: var(--border-color-hover);
+}
+.section-register form .col .col-item label {
+  padding: 1rem 0 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.section-register form .reg-save {
+  width: 100%;
+  margin: 1rem 0 0;
+  padding: 0.5rem;
+  background: var(--on-secondary);
+  border: 1px solid var(--border-color);
+  transition: 0.25s;
+}
+.section-register form .reg-save:hover {
+  background: var(--border-color-hover);
+  color: var(--product-detail-bg);
 }/*# sourceMappingURL=style.css.map */

@@ -558,6 +558,7 @@
   width: 55%;
   display: inherit;
   justify-content: center;
+  align-items: center;
   background: var(--product-detail-bg);
 }
 .section-product-detail .product-detail .left-col img {

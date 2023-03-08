@@ -35,17 +35,17 @@
         <?php include_once $root . '/php/templates/nav.php'; ?>
         
         <div class="breadcrumb">
-            <a href="/">Inicio</a>
-            <i>&nbsp;•&nbsp;</i>
-            <a href="/productos/">Productos</a>
-            <i>&nbsp;•&nbsp;</i>
-            <p><?=$product['name']?></p>
+            <?php if($product['department']){ echo "<a href='/categorias/".getUrl($product['department'])."'>".$product['department']."</a>"; } ?>
+            <?php if($product['type1']!="N/A"){ echo "<i>&nbsp;•&nbsp;</i><a href='/categorias/".getUrl($product['type1'])."'>".$product['type1']."</a>"; } ?>
+            <?php if($product['type2']!="N/A"){ echo "<i>&nbsp;•&nbsp;</i><a href='/categorias/".getUrl($product['type2'])."'>".$product['type2']."</a>"; } ?>
+            <?php if($product['type3']!="N/A"){ echo "<i>&nbsp;•&nbsp;</i><a href='/categorias/".getUrl($product['type3'])."'>".$product['type3']."</a>"; } ?>
+            <?php if($product['name']){ echo "<i>&nbsp;•&nbsp;</i><p>".$product['name']."</p>"; } ?>
         </div>
 
         <section class="section-product-detail">
             <div class="product-detail">
                 <div class="left-col">
-                    <img src="/assets/img/product/<?=getUrl($product['name']).'-'.$product['cod']?>.png" alt="<?=$product['name']?>" title="<?=$product['name']?>">
+                    <img src="/assets/img/product/<?=getUrl($product['name']).'-'.$product['sku']?>.png" alt="<?=$product['name']?>" title="<?=$product['name']?>">
                 </div>
                 <div class="right-col">
                     <div class="title">
@@ -55,10 +55,10 @@
                     <p class="price"><?=$product['price']?> Bs</p>
                     <p class="easy-credit"><a href="#">Disponible para comprar con tu tarjeta<i>&nbsp;&nbsp;<img src="/assets/svg/easy-credit.svg" alt="Easy Credit" title="Easy Credit"></i></a></p>
                     <div class="description">
-                        <p>SKU:&nbsp;<b><?=$product['cod']?></b></p>
-                        <?php if($product['collection']=='Otro') {} else{ echo "<p>Colección:&nbsp;<b>".$product['collection']."</b></p>";}?>
-                        <?php if($product['color']=='Otro') {} else{ echo "<p>Color:&nbsp;<b>".$product['color']."</b></p>";}?>
-                        <?php if($product['material']=='Otro') {} else{ echo "<p>Material:&nbsp;<b>".$product['material']."</b></p>";}?>
+                        <p>SKU:&nbsp;<b><?=$product['sku']?></b></p>
+                        <?php if($product['collection']=='N/A') {} else{ echo "<p>Colección:&nbsp;<b>".$product['collection']."</b></p>";}?>
+                        <?php if($product['color']=='N/A') {} else{ echo "<p>Color:&nbsp;<b>".$product['color']."</b></p>";}?>
+                        <?php if($product['material']=='N/A') {} else{ echo "<p>Material:&nbsp;<b>".$product['material']."</b></p>";}?>
                     </div>
                     <button>Comprar</button>
                     <button>Easy Credit</button>
