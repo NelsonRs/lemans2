@@ -46,7 +46,7 @@
                             <h2>Categorías</h2>
                         </button>
                         <form class="content form">
-                            <ul> <?=selectFiltersByUrl($url,'brand')?> </ul>
+                            <ul> <?=selectCheckbox('brand')?> </ul>
                         </form>
                     </div>
                     <div class="filter">
@@ -54,7 +54,7 @@
                             <h2>Marcas</h2>
                         </button>
                         <form class="content form">
-                            <ul> <?=selectFiltersByUrl($url,'brand')?> </ul>
+                            <ul> <?=selectCheckbox('brand')?> </ul>
                         </form>
                     </div>
                     <div class="filter">
@@ -62,7 +62,7 @@
                             <h2>Material</h2>
                         </button>
                         <form class="content form">
-                            <ul> <?=selectFiltersByUrl($url,'material')?> </ul>
+                            <ul> <?=selectCheckbox('material')?> </ul>
                         </form>
                     </div>
                     <div class="filter">
@@ -70,7 +70,7 @@
                             <h2>Color</h2>
                         </button>
                         <form class="content form">
-                            <ul> <?=selectFiltersByUrl($url,'color')?> </ul>
+                            <ul> <?=selectCheckbox('color')?> </ul>
                         </form>
                     </div>
                 </div>

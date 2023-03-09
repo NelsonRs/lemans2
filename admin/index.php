@@ -22,76 +22,80 @@
 
     <section class="section-register">
         <h1>Registro Producto</h1>
-        <form method="post" enctype="multipart/form-data" action="<?php "/php/models/class.php"?>">
+        <form action="/php/models/class.php" method="post" enctype="multipart/form-data">
             <div class="col">
                 <div class="col-item">
                     <label for="reg-name">Nombre Producto <i>•</i></label>
-                    <input id="reg-name" type="text" placeholder="Obligatorio" required>
+                    <input id="reg-name" name="reg-name" type="text" placeholder="Obligatorio" required>
 
                     <label for="reg-sku">SKU <i>•</i></label>
-                    <input id="reg-sku" type="text" placeholder="Obligatorio" required>
+                    <input id="reg-sku" name="reg-sku" type="text" placeholder="Obligatorio" required>
 
                     <label for="reg-price">Precio <i>•</i></label>
-                    <input id="reg-price" min="1" type="number" pattern="^[0-9]+" placeholder="Obligatorio" required>
+                    <input id="reg-price" name="reg-price"  min="1" type="number" pattern="^[0-9]+" placeholder="Obligatorio" required>
 
                     <label for="reg-img">Subir Imagen <i>•</i></label>
-                    <input id="reg-img" type="file" accept="image/jpeg, image/jpg, image/png, image/webp" required>
+                    <input type="file" name="reg-img" id="reg-img">
 
                     <label for="reg-brand">Marca</label>
-                    <select name="reg-brand" id="reg-brand">
+                    <select name="reg-brand" id="reg-brand" name="reg-brand">
                         <option value="" hidden selected>Seleccionar Marca</option>
                         <?=selectForm('brand')?>
                     </select>
 
                     <label for="reg-collection">Colección</label>
-                    <select name="reg-collection" id="reg-collection">
-                        <option value="" hidden selected>Seleccionar Colección</option>
+                    <select name="reg-collection" id="reg-collection" name="reg-collection">
+                        <option value="1" hidden selected>Seleccionar Colección</option>
                         <?=selectForm('collection')?>
                     </select>
                     
                 </div>
                 <div class="col-item">
                     
-                    <label for="reg-dep">Departamento</label>
-                    <select name="reg-dep" id="reg-dep">
-                        <option value="" hidden selected>Seleccionar Departamento</option>
+                    <label for="reg-department">Departamento</label>
+                    <select name="reg-department" id="reg-department">
+                        <option value="1" hidden selected>Seleccionar Departamento</option>
                         <?=selectForm('department')?>
                     </select>
 
                     <label for="reg-type1">Grupo</label>
                     <select name="reg-type1" id="reg-type1">
-                        <option value="" hidden selected>Seleccionar Grupo</option>
+                        <option value="1" hidden selected>Seleccionar Grupo</option>
                         <?=selectForm('type1')?>
                     </select>
 
                     <label for="reg-type2">Subgrupo</label>
                     <select name="reg-type2" id="reg-type2">
-                        <option value="" hidden selected>Seleccionar Subgrupo</option>
+                        <option value="1" hidden selected>Seleccionar Subgrupo</option>
                         <?=selectForm('type2')?>
                     </select>
 
                     <label for="reg-type3">Clase</label>
                     <select name="reg-type3" id="reg-type3">
-                        <option value="" hidden selected>Seleccionar Clase</option>
+                        <option value="1" hidden selected>Seleccionar Clase</option>
                         <?=selectForm('type3')?>
                     </select>
 
                     <label for="reg-material">Material</label>
                     <select name="reg-material" id="reg-material">
-                        <option value="" hidden selected>Seleccionar Material</option>
+                        <option value="1" hidden selected>Seleccionar Material</option>
                         <?=selectForm('material')?>
                     </select>
 
                     <label for="reg-color">Color</label>
                     <select name="reg-color" id="reg-color">
-                        <option value="" hidden selected>Seleccionar Color</option>
+                        <option value="1" hidden selected>Seleccionar Color</option>
                         <?=selectForm('color')?>
                     </select>
                     
                 </div>
             </div>
-            <button class="reg-save" type="submit">Registrar</button>
+            <button class="reg-save" name="reg-save" type="submit">Registrar</button>
         </form>
+    </section>
+
+    <section class="section-filter">
+        <h2>Registro</h2>
     </section>
 
 <script src="<?php $root?>/assets/js/main.js"></script>
