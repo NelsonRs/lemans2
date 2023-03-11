@@ -153,7 +153,7 @@
         font-size: 2rem;
         font-weight: 600;
         padding: 0 2rem 2rem;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border);
     }
     .title-sucursales { padding: 2.5rem 5rem; font-weight: 800; font-size: xx-large; }
     .sucursal-grid {
@@ -196,7 +196,7 @@
   background: url(../svg/route.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-color: white;
+  background-color: var(--bg);
   z-index: 9999;
   cursor: pointer;
   &.active{ display: none; }
@@ -255,12 +255,12 @@
             width: 15rem;
             background: unset;
             border: unset;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
             padding: .25rem .5rem;
             transition: .25s border;
             &:focus-visible{
                 outline: unset;
-                border-color: var(--border-color-hover);
+                border-color: var(--border);
             }
         }
     }
@@ -275,8 +275,6 @@
         .col-right { grid-area: 1 / 2 / 6 / 5; }
 
         .col-left{
-            position: sticky;
-            top: 0;
             .filter{
                 .collapsible {
                     display: flex;
@@ -284,14 +282,14 @@
                     align-items: center;
                     cursor: pointer;
                     width: 100%;
-                    padding: 1rem 0 .5rem;
-                    border: none;
-                    border-bottom: 1px solid var(--border-color);
+                    padding: .5rem 1rem;
+                    border-bottom: 1px solid var(--border);
+                    background: var(--btn);
                     outline: none;
-                    background: unset;
+                    transition: all .5s ease-out;
                     h2{
                         font-size: 1rem;
-                        font-weight: 400;
+                        font-weight: 500;
                     }
                     &.active::after{
                         content: '\2212';
@@ -299,20 +297,19 @@
                     &::after{
                         content: '\002B';
                         font-size: 1.5rem;
-                        color: var(--text-color);
+                        color: var(--text);
                     }
                 }
                 .content {
-                    display: none;
-                    padding: 2rem;
+                    display: block;
                     max-height: 0;
                     overflow: hidden;
-                    transition: max-height 0.5s ease-out, padding .5s ease-out;
                     &.active{
-                        display: unset;
-                        transition: max-height 0.5s ease-out, padding .5s ease-out;
+                        display: contents;
                         ul{
-                            padding: 0 1.5rem;
+                            padding: 1rem;
+                            background: var(--btn);
+                           
                             li{
                                 padding: .25rem 0;
                             }
@@ -325,7 +322,7 @@
                     label {
                         cursor: pointer;
                         b{
-                            color: var(--primary);
+                            color: var(--active);
                         }
                     }
                     input[type="checkbox"] {
@@ -338,7 +335,7 @@
                     cursor: pointer;
                         -webkit-appearance: none;
                         appearance: none;
-                        border: 1px solid var(--border-color);
+                        border: 1px solid var(--border);
                     }
                     input[type="checkbox"]:before {
                         content: '';
@@ -349,8 +346,8 @@
                         width: 4px;
                         height: 9px;
                         margin: 0px 4px;
-                        border-bottom: 2px solid var(--primary);
-                        border-right: 2px solid var(--primary);
+                        border-bottom: 2px solid var(--active);
+                        border-right: 2px solid var(--active);
                         transform: rotate(45deg);
                     }
                 }
@@ -375,7 +372,7 @@
                     &:hover{
                         .top{
                             &::before{
-                                background: var(--card-bg-hover);
+                                background: var(--card);
                             }
                             img{
                                 max-width: 72.5%;
@@ -385,7 +382,7 @@
                         }
                         .bottom{
                             button{
-                                background: #D9D9D9 ;
+                                background: var(--card) ;
                             }
                         }
                     }
@@ -431,7 +428,7 @@
                                 margin: 0 .5rem 0 0;
                             }
                         }
-                        p{ color: var(--text-secondary-color); margin: .5rem 0;}
+                        p{ color: var(--disabled); margin: .5rem 0;}
                         p:nth-of-type(1){
                             display: -webkit-box;
                             -webkit-box-orient: vertical;
@@ -445,8 +442,8 @@
                         button{
                             width: 100%;
                             padding: .5rem;
-                            border: 1px solid #dadada;
-                            background: #EEEEEE ;
+                            border: 1px solid var(--border);
+                            background: var(--btn) ;
                             transition: all .25s;
                             cursor: pointer;
                         }
@@ -475,7 +472,7 @@
         }
     }
     i{
-        color: var(--primary);
+        color: var(--active);
         font-size: 1.5rem;
         font-style: unset;
     }
@@ -490,12 +487,12 @@
             display: inherit;
             justify-content: center;
             align-items: center;
-            background: var(--product-detail-bg);
+            background: var(--btn);
             img{
                 max-width: 85%;
                 max-height: 70%;
                 padding: 2rem;
-                filter: drop-shadow(0px 0px 4px var(--border-color));
+                filter: drop-shadow(0px 0px 4px var(--border));
             }
         }
         .right-col{
@@ -542,20 +539,21 @@
             button{
                 width: 100%;
                 padding: .5rem 1rem;
+                transition: .25s;
                 cursor: pointer;
             }
             button:nth-of-type(1){
-                background: #EEEEEE ;
-                border: 1px solid #dadada;
+                background: var(--hover) ;
+                border: 1px solid var(--border);
                 &:hover{
                     background: #D9D9D9 ;
                 }
             }
             button:nth-of-type(2){
-                background: var(--black);
+                background: var(--text);
                 color: #EEC92C;
                 &:hover{
-                    background: #1c1c1c ;
+                    background: var(--disabled) ;
                 }
             }
         }

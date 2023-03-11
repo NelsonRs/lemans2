@@ -39,7 +39,7 @@
 
                     <label for="reg-brand">Marca</label>
                     <select name="reg-brand" id="reg-brand" name="reg-brand">
-                        <option value="" hidden selected>Seleccionar Marca</option>
+                        <option value="1" hidden selected>Seleccionar Marca</option>
                         <?=selectForm('brand')?>
                     </select>
 

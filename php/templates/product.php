@@ -35,7 +35,7 @@
         <?php include_once $root . '/php/templates/nav.php'; ?>
         
         <div class="breadcrumb">
-            <?php if($product['department']){ echo "<a href='/categorias/".getUrl($product['department'])."'>".$product['department']."</a>"; } ?>
+            <?php if($product['department']!="N/A"){ echo "<a href='/categorias/".getUrl($product['department'])."'>".$product['department']."</a>"; } ?>
             <?php if($product['type1']!="N/A"){ echo "<i>&nbsp;•&nbsp;</i><a href='/categorias/".getUrl($product['type1'])."'>".$product['type1']."</a>"; } ?>
             <?php if($product['type2']!="N/A"){ echo "<i>&nbsp;•&nbsp;</i><a href='/categorias/".getUrl($product['type2'])."'>".$product['type2']."</a>"; } ?>
             <?php if($product['type3']!="N/A"){ echo "<i>&nbsp;•&nbsp;</i><a href='/categorias/".getUrl($product['type3'])."'>".$product['type3']."</a>"; } ?>

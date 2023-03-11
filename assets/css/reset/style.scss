@@ -1,36 +1,28 @@
 // COLORS
 :root{
-    --black           :#303030;
-    --white           :#F2F2F2;
-    --primary         :#CE111B;
-    --secondary       :#F2F2F2;
-    --on-secondary    :#ffffff;
-    --tertiary        :#a1a1a1;
-    --quaternary      :#505050;
+    --white:         #F2F2F2;
   }
 html[data-theme='light'] {
-    --bg                            :var(--white);
-    --card-bg                       :var(--on-secondary);
-    --card-bg-hover                 :var(--secondary);
-    --card-btn-bg                   :#cfcfcf;
-    --text-color                    :var(--black);
-    --text-secondary-color          :var(--quaternary);
-    --border-color                  :var(--tertiary);
-    --border-color-hover            :var(--black);
-    --logo-text                     :var(--primary); 
-
-    --product-detail-bg             :#EEEEEE;
+  --link:       #0B57D0;
+  --bg:         #F2F2F2;
+  --text:       #1F1F1F;
+  --card:       #F8FAFD;
+  --border:     #E1E3E1;
+  --active:     #CE111B;
+  --hover:      #E5E8ED;
+  --disabled:   #444746;
+  --btn:        #EEEEEE;
 }
 html[data-theme='dark'] {
-
-    --bg                            :var(--black);
-    --card-bg                       :var(--quaternary);
-    --card-bg-hover                 :var(--tertiary);
-    --text-color                    :var(--white);
-    --text-secondary-color          :var(--secondary);
-    --border-color                  :var(--quaternary);
-    --border-color-hover            :var(--secondary);
-    --logo-text                     :var(--white); 
+  --link:       #A8C7FA;
+  --bg:         #1F1F1F;
+  --text:       #E3E3E3;
+  --card:       #28292A;
+  --border:     #444746;
+  --active:     #004A77;
+  --hover:      #393B3D;
+  --disabled:   #C9CDCA;
+  --btn:        #252525;
 }
 
 
@@ -78,7 +70,7 @@ html[data-theme='dark'] {
     -webkit-font-smoothing: antialiased;
     font-smooth: antialiased;
     vertical-align: baseline;
-    color: var(--text-color);
+    color: var(--text);
     outline: unset;
   }
   article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { display: block; }
@@ -107,18 +99,18 @@ html[data-theme='dark'] {
 
   html{
     &::-webkit-scrollbar { width: 5px; }
-    &::-webkit-scrollbar-track { background: var(--card-bg); }
+    &::-webkit-scrollbar-track { background: var(--bg); }
     &::-webkit-scrollbar-thumb {
-      background: var(--text-color);
-      &:hover { background: var(--card-bg-hover); }
-      &:active { background: var(--black); }
+      background: var(--text);
+      &:hover { background: var(--card); }
+      &:active { background: var(--bg); }
     }
   }
 
   .header-nav{
     display: flex;
     justify-content: space-between;
-    background: var(--black);
+    background: var(--text);
     padding: 0.5rem 2rem;
     .col-left{
       img{
@@ -136,6 +128,7 @@ html[data-theme='dark'] {
     z-index: 10;
     display: flex;
     padding: 0.75rem 2rem ;
+    border-bottom: 1px solid var(--border);
     .col-left,.col-mid,.col-right{
         display: flex;
         align-items: center;

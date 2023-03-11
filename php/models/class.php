@@ -28,7 +28,7 @@ function selectProductByCod($sku){
 
 function selectProducts(){
     global $mysqli;
-    $result = $mysqli->query("SELECT P.id,P.name,P.sku,P.price,C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P  INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id ORDER BY P.name ASC");
+    $result = $mysqli->query("SELECT P.id,P.name,P.sku,P.price,C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P  INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id ORDER BY P.sku ASC");
     $result = printProducts($result);
     return $result;
 }
@@ -207,25 +207,25 @@ if (isset($_POST['reg-save'])) {
 
 // INSERT PRODUCT
 function insertProduct($sku,$name,$price,$img,$brand,$material,$color,$collection,$department,$type1,$type2,$type3){
-    global $url, $mysqli;
+    global $root, $mysqli;
     if (isset($img) && $img != "") {
-      $type = $_FILES['image']['type'];
-      $temp = $_FILES['image']['tmp_name'];
+      $type = $_FILES['reg-img']['type'];
+      $temp = $_FILES['reg-img']['tmp_name'];
   
       if (!((strpos($type, 'gif') || strpos($type, 'jpeg') || strpos($type, 'webp') || strpos($type, 'png')))) {
         $_SESSION['mensaje'] = 'Solo se admite archivos jpeg, gif, webp';
       } 
       else {
-        $query = $mysqli->query("INSERT INTO product(sku,name,price,brand_id,material_id,color_id,collection_id,department_id,typ1_id,typ2_id,typ3_id) VALUES('$sku','$name','$price','$brand','$material','$color','$collection','$department','$type1','$type2','$type3')");
+        $query = $mysqli->query("INSERT INTO product(sku,name,price,brand_id,material_id,color_id,collection_id,department_id,type1_id,type2_id,type3_id) VALUES('$sku','$name','$price','$brand','$material','$color','$collection','$department','$type1','$type2','$type3')");
         $result = $query;
         if ($result) {
           $_SESSION['mensaje'] = 'Se subió correctamente';
-          move_uploaded_file($temp, $url . '/assets/img/product/'.$img);
-          rename($url . '/assets/img/product/'.$img,$url . '/assets/img/product/'.getUrl($name).'-'.$sku.'.png');
+          move_uploaded_file($temp, $root . '/assets/img/product/'.$img);
+          rename($root . '/assets/img/product/'.$img,$root . '/assets/img/product/'.getUrl($name).'-'.$sku.'.png');
           $select = selectProductByCod($sku);
-          mkdir($url."/productos/".getUrl($name).'-'.$select['id']."", 0755);
-          copy("$url/php/templates/template.php","$url/productos/".getUrl($name).'-'.$select['id']."/index.php");
-          header('location: ../');
+          mkdir($root."/productos/".getUrl($name).'-'.$select['id']."", 0755);
+          copy("$root/php/templates/template.php","$root/productos/".getUrl($name).'-'.$select['id']."/index.php");
+          header('location: /admin');
         } else {
           $_SESSION['mensaje'] = 'Ocurrió un error';
         }

@@ -170,7 +170,7 @@
   font-size: 2rem;
   font-weight: 600;
   padding: 0 2rem 2rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border);
 }
 .section-office-index .title-sucursales {
   padding: 2.5rem 5rem;
@@ -231,7 +231,7 @@
   background: url(../svg/route.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-color: white;
+  background-color: var(--bg);
   z-index: 9999;
   cursor: pointer;
 }
@@ -325,13 +325,13 @@
   width: 15rem;
   background: unset;
   border: unset;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border);
   padding: 0.25rem 0.5rem;
   transition: 0.25s border;
 }
 .section-products .search input:focus-visible {
   outline: unset;
-  border-color: var(--border-color-hover);
+  border-color: var(--border);
 }
 .section-products .grid {
   display: grid;
@@ -346,25 +346,21 @@
 .section-products .grid .col-right {
   grid-area: 1/2/6/5;
 }
-.section-products .grid .col-left {
-  position: sticky;
-  top: 0;
-}
 .section-products .grid .col-left .filter .collapsible {
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   width: 100%;
-  padding: 1rem 0 0.5rem;
-  border: none;
-  border-bottom: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--btn);
   outline: none;
-  background: unset;
+  transition: all 0.5s ease-out;
 }
 .section-products .grid .col-left .filter .collapsible h2 {
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 .section-products .grid .col-left .filter .collapsible.active::after {
   content: "−";
@@ -372,21 +368,19 @@
 .section-products .grid .col-left .filter .collapsible::after {
   content: "+";
   font-size: 1.5rem;
-  color: var(--text-color);
+  color: var(--text);
 }
 .section-products .grid .col-left .filter .content {
-  display: none;
-  padding: 2rem;
+  display: block;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-out, padding 0.5s ease-out;
 }
 .section-products .grid .col-left .filter .content.active {
-  display: unset;
-  transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+  display: contents;
 }
 .section-products .grid .col-left .filter .content.active ul {
-  padding: 0 1.5rem;
+  padding: 1rem;
+  background: var(--btn);
 }
 .section-products .grid .col-left .filter .content.active ul li {
   padding: 0.25rem 0;
@@ -399,7 +393,7 @@
   cursor: pointer;
 }
 .section-products .grid .col-left .filter .content label b {
-  color: var(--primary);
+  color: var(--active);
 }
 .section-products .grid .col-left .filter .content input[type=checkbox] {
   position: relative;
@@ -412,7 +406,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
 }
 .section-products .grid .col-left .filter .content input[type=checkbox]:before {
   content: "";
@@ -423,8 +417,8 @@
   width: 4px;
   height: 9px;
   margin: 0px 4px;
-  border-bottom: 2px solid var(--primary);
-  border-right: 2px solid var(--primary);
+  border-bottom: 2px solid var(--active);
+  border-right: 2px solid var(--active);
   transform: rotate(45deg);
 }
 .section-products .grid .col-right {
@@ -447,7 +441,7 @@
   transition: all 0.25s;
 }
 .section-products .grid .col-right .products .card:hover .top::before {
-  background: var(--card-bg-hover);
+  background: var(--card);
 }
 .section-products .grid .col-right .products .card:hover .top img {
   max-width: 72.5%;
@@ -455,7 +449,7 @@
   filter: brightness(1.1) contrast(1.1);
 }
 .section-products .grid .col-right .products .card:hover .bottom button {
-  background: #D9D9D9;
+  background: var(--card);
 }
 .section-products .grid .col-right .products .card .top {
   transition: all 0.25s;
@@ -502,7 +496,7 @@
   margin: 0 0.5rem 0 0;
 }
 .section-products .grid .col-right .products .card .bottom p {
-  color: var(--text-secondary-color);
+  color: var(--disabled);
   margin: 0.5rem 0;
 }
 .section-products .grid .col-right .products .card .bottom p:nth-of-type(1) {
@@ -520,8 +514,8 @@
 .section-products .grid .col-right .products .card .bottom button {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid #dadada;
-  background: #EEEEEE;
+  border: 1px solid var(--border);
+  background: var(--btn);
   transition: all 0.25s;
   cursor: pointer;
 }
@@ -543,7 +537,7 @@
   text-decoration: underline;
 }
 .breadcrumb i {
-  color: var(--primary);
+  color: var(--active);
   font-size: 1.5rem;
   font-style: unset;
 }
@@ -559,13 +553,13 @@
   display: inherit;
   justify-content: center;
   align-items: center;
-  background: var(--product-detail-bg);
+  background: var(--btn);
 }
 .section-product-detail .product-detail .left-col img {
   max-width: 85%;
   max-height: 70%;
   padding: 2rem;
-  filter: drop-shadow(0px 0px 4px var(--border-color));
+  filter: drop-shadow(0px 0px 4px var(--border));
 }
 .section-product-detail .product-detail .right-col {
   width: 45%;
@@ -614,19 +608,20 @@
 .section-product-detail .product-detail .right-col button {
   width: 100%;
   padding: 0.5rem 1rem;
+  transition: 0.25s;
   cursor: pointer;
 }
 .section-product-detail .product-detail .right-col button:nth-of-type(1) {
-  background: #EEEEEE;
-  border: 1px solid #dadada;
+  background: var(--hover);
+  border: 1px solid var(--border);
 }
 .section-product-detail .product-detail .right-col button:nth-of-type(1):hover {
   background: #D9D9D9;
 }
 .section-product-detail .product-detail .right-col button:nth-of-type(2) {
-  background: var(--black);
+  background: var(--text);
   color: #EEC92C;
 }
 .section-product-detail .product-detail .right-col button:nth-of-type(2):hover {
-  background: #1c1c1c;
+  background: var(--disabled);
 }/*# sourceMappingURL=style.css.map */
