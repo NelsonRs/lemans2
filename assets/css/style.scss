@@ -454,7 +454,7 @@
     }
 }
 
-// D E T A L L E
+// D E T A L I L S
 
 .breadcrumb{
     display: flex;
@@ -484,13 +484,14 @@
         display: flex;
         .left-col{
             width: 55%;
+            height: 600px;
             display: inherit;
             justify-content: center;
-            align-items: center;
             background: var(--btn);
             img{
                 max-width: 85%;
                 max-height: 70%;
+                object-fit:contain ;                             
                 padding: 2rem;
                 filter: drop-shadow(0px 0px 4px var(--border));
             }

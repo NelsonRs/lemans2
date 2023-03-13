@@ -550,14 +550,16 @@
 }
 .section-product-detail .product-detail .left-col {
   width: 55%;
+  height: 600px;
   display: inherit;
   justify-content: center;
-  align-items: center;
   background: var(--btn);
 }
 .section-product-detail .product-detail .left-col img {
   max-width: 85%;
   max-height: 70%;
+  -o-object-fit: contain;
+     object-fit: contain;
   padding: 2rem;
   filter: drop-shadow(0px 0px 4px var(--border));
 }
