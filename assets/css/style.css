@@ -427,7 +427,7 @@
 .section-products .grid .col-right .products {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: 1fr;
+  grid-auto-rows: 350px;
   gap: 15px;
 }
 .section-products .grid .col-right .products .card {
@@ -436,7 +436,6 @@
   box-sizing: border-box;
   border: 1px solid transparent;
   cursor: pointer;
-  height: 375px;
   width: 100%;
   transition: all 0.25s;
 }
@@ -457,7 +456,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50%;
+  box-sizing: border-box;
+  height: 60%;
 }
 .section-products .grid .col-right .products .card .top::before {
   transition: all 0.25s;
@@ -478,7 +478,7 @@
 }
 .section-products .grid .col-right .products .card .bottom {
   box-sizing: border-box;
-  height: 50%;
+  height: 40%;
   padding: 1rem 0;
 }
 .section-products .grid .col-right .products .card .bottom .brand {
