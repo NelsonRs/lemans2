@@ -24,60 +24,39 @@
 </head>
 <body>
     <main>
-        <?php
-            $url = $_SERVER['REQUEST_URI'];
-            $url = @array_pop(array_filter(explode('/',"$url")));
-        ?>
         <!-- NAVBAR -->
         <?php include_once $root . '/php/templates/nav.php'; ?>
-        <section class="section-products">
-            <div class="search">
-                <h1>Todos los Productos</h1>
-                <form action="#" method="post">
-                    <input type="search" name="search" id="search" placeholder="Buscar">
-                </form>
+        
+        
+        <section class="section-furniture">
+            <h1>Productos | Le Mans</h1>
+            
+            <header><h2>Muebles</h2></header>
+
+            <div class="articles">
+                <article>
+                    <div class="col-1">
+                        <img src="/assets/img/banner/mueble-1-product.png">
+                    </div>
+                    <div class="col-2">
+                        <h3>Loveseat</h3>
+                        <p>Los más cómodos loveseats de calidad americana.</p>
+                        <button>Ver producto <i><svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.441 0.541461L11.3688 7.67316L9.82812 7.68624L9.87794 3.19242L2.08547 10.9849L0.997613 9.89703L8.79008 2.10456L4.28468 2.1428L4.29776 0.602097L11.441 0.541461Z" fill="#1F1F1F"/></svg></i></button>
+                    </div>
+                </article>
+
+                <article>
+                    <div class="col-1">
+                        <img src="/assets/img/banner/mueble-2-product.png">
+                    </div>
+                    <div class="col-2">
+                        <h3>Sofa</h3>
+                        <p>Los más cómodos sofas de calidad americana.</p>
+                        <button>Ver producto <i><svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.441 0.541461L11.3688 7.67316L9.82812 7.68624L9.87794 3.19242L2.08547 10.9849L0.997613 9.89703L8.79008 2.10456L4.28468 2.1428L4.29776 0.602097L11.441 0.541461Z" fill="#1F1F1F"/></svg></i></button>
+                    </div>
+                </article>
             </div>
-            <div class="grid" id="grid">
-                <div class="col-left">
-                    <div class="filter">
-                        <button class="collapsible">
-                            <h2>Categorías</h2>
-                        </button>
-                        <form class="content form">
-                            <ul> <?=selectCheckbox('brand')?> </ul>
-                        </form>
-                    </div>
-                    <div class="filter">
-                        <button class="collapsible">
-                            <h2>Marcas</h2>
-                        </button>
-                        <form class="content form">
-                            <ul> <?=selectCheckbox('brand')?> </ul>
-                        </form>
-                    </div>
-                    <div class="filter">
-                        <button class="collapsible">
-                            <h2>Material</h2>
-                        </button>
-                        <form class="content form">
-                            <ul> <?=selectCheckbox('material')?> </ul>
-                        </form>
-                    </div>
-                    <div class="filter">
-                        <button class="collapsible">
-                            <h2>Color</h2>
-                        </button>
-                        <form class="content form">
-                            <ul> <?=selectCheckbox('color')?> </ul>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-right">
-                    <div class="products">
-                        <?=selectProducts()?>
-                    </div>
-                </div>
-            </div>
+
         </section>
     </main>
     <!-- JS -->

@@ -240,6 +240,47 @@
 
 // P R O D U C T O S
 
+.section-furniture{
+    padding: 2rem 2rem 0;
+
+    h1{opacity: 0; line-height: 0;}
+
+    header{
+        h2{
+            font-size: 2rem;
+            font-weight: 500;
+        }
+    }
+    .articles{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 450px;
+        gap: 32px;
+        padding: 1rem 0 0;
+        article{
+            box-sizing: border-box;
+            height: 100%;
+            border: 1px solid var(--border);
+            .col-1{
+                width: 100%;
+                height: 75%;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .col-2{
+                height: 25%;
+                padding: 1rem;
+                h3{
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
 .section-products{
     padding: 2rem;
     .search{
