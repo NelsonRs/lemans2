@@ -38,6 +38,12 @@ function selectProductByUrl($url){
     $result = printProducts($result);
     return $result;
 }
+function selectProductQtyByUrl($url){
+  global $mysqli;
+  $result = $mysqli->query("SELECT p.id,p.sku,p.name,p.price,b.name AS 'brand',de.name AS 'department',t1.name AS 'type1',t2.name AS 'type2',t3.name AS 'type3' FROM product p INNER JOIN brand b ON b.id = p.brand_id INNER JOIN department de ON de.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE t1.name='$url' OR de.name='$url' OR t2.name='$url' OR t3.name='$url'");
+  $result = $result->num_rows;
+  return $result;
+}
 function selectFiltersByUrl($url,$table_column){
   global $mysqli;
   if ($table_column=="brand") {
@@ -119,7 +125,8 @@ function printCheckbox($result,$table_name){
                 $n_rows = $mysqli->query("SELECT P.id,P.name,P.sku,P.price,B.name AS'brand',C.name AS'color',M.name AS'material'FROM product P INNER JOIN brand B ON B.id = P.brand_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id WHERE $t_name='$name'");
                 $n_rows = $n_rows->num_rows;
                 if ($n_rows!=0) {
-                    $n_rows = " <b>•</b> ($n_rows)";
+                    // $n_rows = " <b>•</b> ($n_rows)";
+                    $n_rows = " <b>$n_rows</b> ";
                 }
                 else{
                     $n_rows = "";
@@ -127,7 +134,7 @@ function printCheckbox($result,$table_name){
                 $html .= '
                         <li class="option">
                             <input class="input_checkbox" name="" type="checkbox" id="'.$table_name.'-checkbox-'.$id.'" value="'.$name.'">
-                            <label for="'.$table_name.'-checkbox-'.$id.'"><span class="filter-title">'.$name.$n_rows.'</span></label>
+                            <label for="'.$table_name.'-checkbox-'.$id.'"><span class="filter-title">'.$name.'</span>'.$n_rows.'</label>
                         </li>
                     ';
             }
