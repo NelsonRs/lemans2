@@ -7,12 +7,13 @@ html[data-theme=light] {
   --link: #0B57D0;
   --bg: #F2F2F2;
   --text: #1F1F1F;
-  --card: #F8FAFD;
+  --card: #EEEEEE;
   --border: #E1E3E1;
-  --active: #CE111B;
-  --hover: #E5E8ED;
+  --active: #D3D3D3;
+  --hover: #DDDDDD;
   --disabled: #444746;
-  --btn: #EEEEEE;
+  --btn: #DFDFDF;
+  --btn-hover: #CCCCCC;
 }
 
 html[data-theme=dark] {

@@ -168,7 +168,7 @@
             box-sizing: border-box;
             height: 100%;
             border: 1px solid var(--border);
-            background: var(--btn);
+            background: var(--card);
             .col-1{
                 width: 100%;
                 height: 75%;
@@ -197,17 +197,16 @@
                     align-items: center;
                     margin: 1rem 0 0;
                     padding: .35rem 1rem;
-                    background: var(--border);
+                    background: var(--btn);
                     cursor: pointer;
                     transition: all .25s;
                     &:hover{
-                        background: var(--disabled);
-                        color: var(--bg);
-                        svg{
-                            path{
-                                fill: var(--bg);
-                            }
-                        }
+                        background: var(--btn-hover);
+                        // svg{
+                        //     path{
+                                // fill: var(--hover);
+                        //     }
+                        // }
                     }
                     i{
                         margin: 0 0 0 .25rem;
@@ -276,7 +275,7 @@
                     width: 100%;
                     padding: .5rem 1rem;
                     border-bottom: 1px solid var(--border);
-                    background: var(--btn);
+                    background: var(--card);
                     outline: none;
                     transition: all .5s ease-out;
                     h2{
@@ -300,15 +299,18 @@
                         display: contents;
                         ul{
                             padding: 1rem;
-                            background: var(--btn);
+                            background: var(--card);
                             li{
                                 display: flex;
                                 align-items: center;
-                                padding: .25rem 0;
+                                // padding: .25rem 0;
                                 label{
                                     display: flex;
                                     justify-content: space-between;
                                     width: 100%;
+                                    padding: .75rem;   
+                                    border-bottom: 1px solid var(--border);
+                                    border-radius: 10px;
                                     cursor: pointer;
                                     b{
                                         font-weight: 200;
@@ -321,31 +323,53 @@
                             }
                         }
                     }
-                    input[type="checkbox"] {
-                        position: relative;
-                        top: 2px;
-                        box-sizing: content-box;
-                        width: 16px;
-                        height: 14px;
-                        margin: 0 5px 0 0;
-                    cursor: pointer;
-                        -webkit-appearance: none;
-                        appearance: none;
-                        border: 1px solid var(--border);
+                    ul{
+                        li{
+                            input[type="checkbox"] {
+                                // top: 0;
+                                // width: 11px;
+                                // height: 8px;
+                                // margin: 0 5px 0 0;
+                                // position: relative;
+                                // box-sizing: border-box;
+                                cursor: pointer;
+                                -webkit-appearance: none;
+                                appearance: none;
+                                &:hover ~ label{
+                                    background: var(--hover) ;  
+                                    border-radius: 10px;
+                                    padding: .75rem;    
+                                }
+                            }
+                            // input[type="checkbox"]:before {
+                            //     content: '';
+                            //     display: block;
+                            //     transition: transform 200ms;
+                            // }
+                            input[type="checkbox"]:checked {
+                                // border-radius: 50%;
+                                // background: var(--active);
+                                & ~ label{
+                                    background: var(--active) ;   
+                                    border-radius: 10px;
+                                    padding: .75rem;    
+                                }
+                            }
+                            // input[type="checkbox"]:checked:before {
+                            //     width: 100%;
+                            //     height: 100%;
+                            //     // margin: auto auto;
+                            //     border-radius: 50%;
+                            //     background: var(--active);
+
+                            //     ~label{
+                            //         background: var(--border) ;   
+                            //         padding: .5rem;  
+                            //    }
+                            // }
+                        }
                     }
-                    input[type="checkbox"]:before {
-                        content: '';
-                        display: block;
-                        transition: transform 200ms;
-                    }
-                    input[type="checkbox"]:checked:before {
-                        width: 4px;
-                        height: 9px;
-                        margin: 0px 4px;
-                        border-bottom: 2px solid var(--active);
-                        border-right: 2px solid var(--active);
-                        transform: rotate(45deg);
-                    }
+                    
                 }
             }
         }   

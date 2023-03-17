@@ -32,14 +32,14 @@
             <div class="articles">
                 <article>
                     <div class="col-1">
-                        <a href="/categorias/loveseats/">
+                        <a href="/categorias/recliners/">
                             <img src="/assets/img/banner/mueble-1-product.png">
                         </a>
                     </div>
                     <div class="col-2">
-                        <h3>Loveseats</h3>
+                        <h3>Recliners</h3>
                         <p>Los más cómodos loveseats de calidad americana.</p>
-                        <a href="/categorias/loveseats/"><button>Ver producto <i><svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.441 0.541461L11.3688 7.67316L9.82812 7.68624L9.87794 3.19242L2.08547 10.9849L0.997613 9.89703L8.79008 2.10456L4.28468 2.1428L4.29776 0.602097L11.441 0.541461Z" fill="#1F1F1F"/></svg></i></button></a>
+                        <a href="/categorias/recliners/"><button>Ver producto <i><svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.441 0.541461L11.3688 7.67316L9.82812 7.68624L9.87794 3.19242L2.08547 10.9849L0.997613 9.89703L8.79008 2.10456L4.28468 2.1428L4.29776 0.602097L11.441 0.541461Z" fill="#1F1F1F"/></svg></i></button></a>
                     </div>
                 </article>
                 <article>

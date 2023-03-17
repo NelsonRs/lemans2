@@ -185,7 +185,7 @@
   box-sizing: border-box;
   height: 100%;
   border: 1px solid var(--border);
-  background: var(--btn);
+  background: var(--card);
 }
 .section-furniture .articles article .col-1, .section-tiles .articles article .col-1 {
   width: 100%;
@@ -217,16 +217,12 @@
   align-items: center;
   margin: 1rem 0 0;
   padding: 0.35rem 1rem;
-  background: var(--border);
+  background: var(--btn);
   cursor: pointer;
   transition: all 0.25s;
 }
 .section-furniture .articles article .col-2 button:hover, .section-tiles .articles article .col-2 button:hover {
-  background: var(--disabled);
-  color: var(--bg);
-}
-.section-furniture .articles article .col-2 button:hover svg path, .section-tiles .articles article .col-2 button:hover svg path {
-  fill: var(--bg);
+  background: var(--btn-hover);
 }
 .section-furniture .articles article .col-2 button i, .section-tiles .articles article .col-2 button i {
   margin: 0 0 0 0.25rem;
@@ -292,7 +288,7 @@
   width: 100%;
   padding: 0.5rem 1rem;
   border-bottom: 1px solid var(--border);
-  background: var(--btn);
+  background: var(--card);
   outline: none;
   transition: all 0.5s ease-out;
 }
@@ -318,17 +314,19 @@
 }
 .section-products .grid .col-left .filter .content.active ul {
   padding: 1rem;
-  background: var(--btn);
+  background: var(--card);
 }
 .section-products .grid .col-left .filter .content.active ul li {
   display: flex;
   align-items: center;
-  padding: 0.25rem 0;
 }
 .section-products .grid .col-left .filter .content.active ul li label {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  border-radius: 10px;
   cursor: pointer;
 }
 .section-products .grid .col-left .filter .content.active ul li label b {
@@ -338,31 +336,21 @@
   font-size: 0.9rem;
   font-weight: 300;
 }
-.section-products .grid .col-left .filter .content input[type=checkbox] {
-  position: relative;
-  top: 2px;
-  box-sizing: content-box;
-  width: 16px;
-  height: 14px;
-  margin: 0 5px 0 0;
+.section-products .grid .col-left .filter .content ul li input[type=checkbox] {
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
-  border: 1px solid var(--border);
 }
-.section-products .grid .col-left .filter .content input[type=checkbox]:before {
-  content: "";
-  display: block;
-  transition: transform 200ms;
+.section-products .grid .col-left .filter .content ul li input[type=checkbox]:hover ~ label {
+  background: var(--hover);
+  border-radius: 10px;
+  padding: 0.75rem;
 }
-.section-products .grid .col-left .filter .content input[type=checkbox]:checked:before {
-  width: 4px;
-  height: 9px;
-  margin: 0px 4px;
-  border-bottom: 2px solid var(--active);
-  border-right: 2px solid var(--active);
-  transform: rotate(45deg);
+.section-products .grid .col-left .filter .content ul li input[type=checkbox]:checked ~ label {
+  background: var(--active);
+  border-radius: 10px;
+  padding: 0.75rem;
 }
 .section-products .grid .col-right {
   padding: 0 0 0 2rem;
