@@ -4,6 +4,7 @@
     $url = $_SERVER['REQUEST_URI'];
     $url = @array_pop(array_filter(explode('/',"$url")));
     $url = str_replace("-"," ",$url);
+    // var_dump(selectProductByDepartment($url));
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,7 +35,7 @@
         <?php include_once $root . '/php/templates/nav.php'; ?>
         <section class="section-products">
             <div class="search">
-                <h1><?=ucfirst($url); echo '<span>('.selectProductQtyByUrl($url).')</span>'?></h1>
+                <h1><?=ucfirst($url); echo '<span>('.selectProductBadge($url).')</span>'?></h1>
                 <form action="#" method="post">
                     <input type="search" name="search" id="search" placeholder="Buscar">
                 </form>
@@ -46,7 +47,7 @@
                             <h2>Categorías</h2>
                         </button>
                         <form class="content form">
-                            <ul> <?=selectCheckbox('brand')?> </ul>
+                            <ul> <?=selectProductByDepartment($url)?> </ul>
                         </form>
                     </div>
                     <div class="filter">

@@ -468,7 +468,7 @@
   text-decoration: underline;
 }
 .breadcrumb i {
-  color: var(--active);
+  color: #CE111B;
   font-size: 1.5rem;
   font-style: unset;
 }
@@ -484,7 +484,7 @@
   height: 600px;
   display: inherit;
   justify-content: center;
-  background: var(--btn);
+  background: var(--card);
 }
 .section-product-detail .product-detail .left-col img {
   max-width: 85%;

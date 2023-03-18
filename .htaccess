@@ -1,3 +1,0 @@
-RewriteEngine On
-RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://lemans.x10.mx/$1 [R,L]

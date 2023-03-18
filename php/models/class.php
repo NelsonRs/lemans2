@@ -1,5 +1,6 @@
 <?php $root = $_SERVER['DOCUMENT_ROOT']; require_once $root."/php/models/db.php";
 
+// SELECT
 function selectCheckbox($table_name){
     global $mysqli;
     $result = $mysqli->query("SELECT * FROM $table_name");
@@ -7,43 +8,63 @@ function selectCheckbox($table_name){
     return $result;
 }
 
-function selectProductByName($name){
-    global $mysqli;
-    $result = $mysqli->query("SELECT id,name FROM product WHERE name='$name'");
-    $result = $result->fetch_array();
-    return $result;
-}
-function selectProductDetailById($id){
-    global $mysqli;
-    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.sku,CO.name AS'collection',C.name AS'color',M.name AS'material',B.name AS'brand',DE.name AS'department' ,T1.name AS'type1' ,T2.name AS'type2',T3.name AS'type3' FROM product P INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN collection CO ON CO.id = P.collection_id INNER JOIN department DE ON DE.id = P.department_id INNER JOIN TYPE1 T1 ON T1.id = P.type1_id INNER JOIN TYPE2 T2 ON T2.id = P.type2_id INNER JOIN TYPE3 T3 ON T3.id = P.type3_id WHERE P.id='$id'");
-    $result = $result->fetch_assoc();
-    return $result;
-}
-function selectProductByCod($sku){
-    global $mysqli;
-    $result = $mysqli->query("SELECT P.id,P.name,P.price,P.sku,C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P  INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id WHERE P.sku='$sku'");
-    $result = $result->fetch_assoc();
-    return $result;
-}
-
-function selectProducts(){
-    global $mysqli;
-    $result = $mysqli->query("SELECT P.id,P.name,P.sku,P.price,C.name AS'color',M.name AS'material',B.name AS'brand' FROM product P  INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id ORDER BY P.sku ASC");
-    $result = printProducts($result);
-    return $result;
-}
 function selectProductByUrl($url){
     global $mysqli;
     $result = $mysqli->query("SELECT p.id,p.sku,p.name,p.price,b.name AS 'brand',de.name AS 'department',t1.name AS 'type1',t2.name AS 'type2',t3.name AS 'type3' FROM product p INNER JOIN brand b ON b.id = p.brand_id INNER JOIN department de ON de.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE t1.name='$url' OR de.name='$url' OR t2.name='$url' OR t3.name='$url'");
     $result = printProducts($result);
     return $result;
 }
-function selectProductQtyByUrl($url){
+
+function selectProductDetailById($id){
+  global $mysqli;
+  $result = $mysqli->query("SELECT P.id,P.name,P.price,P.sku,CO.name AS'collection',C.name AS'color',M.name AS'material',B.name AS'brand',DE.name AS'department' ,T1.name AS'type1' ,T2.name AS'type2',T3.name AS'type3' FROM product P INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id INNER JOIN brand B ON B.id = P.brand_id INNER JOIN collection CO ON CO.id = P.collection_id INNER JOIN department DE ON DE.id = P.department_id INNER JOIN TYPE1 T1 ON T1.id = P.type1_id INNER JOIN TYPE2 T2 ON T2.id = P.type2_id INNER JOIN TYPE3 T3 ON T3.id = P.type3_id WHERE P.id='$id'");
+  $result = $result->fetch_assoc();
+  return $result;
+}
+
+function selectProductByDepartment($url){
+  global $mysqli; $html = ""; $result = '';
+  $t1 = $mysqli->query("SELECT DISTINCT t1.name AS 'name' FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE dp.name = '$url'");
+  $t2 = $mysqli->query("SELECT DISTINCT t2.name AS 'name' FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE t1.name = '$url'");
+  $t3 = $mysqli->query("SELECT DISTINCT t3.name AS 'name' FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE t2.name = '$url'");
+  if ($t1->num_rows > 0) {
+    $result = $t1;
+  }
+  elseif ($t2->num_rows > 0) {
+    $result = $t2;
+  }
+  elseif ($t3->num_rows > 0) {
+    $result = $t3;
+  }
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $name = $row['name'];
+      if ($name !='N/A') {
+        $n_rows = selectProductBadge($url);
+        $html .= '
+          <li class="option">
+              <input class="input_checkbox" name="" type="checkbox" id="'.getUrl($name).'-checkbox" value="'.getUrl($name).'">
+              <label for="'.getUrl($name).'-checkbox"><span class="filter-title">'.$name.'</span>'.$n_rows.'</label>
+          </li>
+        ';
+      }
+    }
+  }
+  else {
+        $html = "<p>Error</p>";
+        return $html;
+  }
+  return $html;
+}
+  
+
+function selectProductBadge($url){
   global $mysqli;
   $result = $mysqli->query("SELECT p.id,p.sku,p.name,p.price,b.name AS 'brand',de.name AS 'department',t1.name AS 'type1',t2.name AS 'type2',t3.name AS 'type3' FROM product p INNER JOIN brand b ON b.id = p.brand_id INNER JOIN department de ON de.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE t1.name='$url' OR de.name='$url' OR t2.name='$url' OR t3.name='$url'");
   $result = $result->num_rows;
   return $result;
 }
+
 function selectFiltersByUrl($url,$table_column){
   global $mysqli;
   if ($table_column=="brand") {
@@ -104,8 +125,14 @@ function getUrl($string_in){
 	return $string_output;
 }
 
+function selectForm($select){
+  global $mysqli;
+  $result = $mysqli->query("SELECT id,name FROM $select");
+  $result = printSelectForm($result);
+  return $result;
+}
 
-
+// PRINT
 function printCheckbox($result,$table_name){
     global $mysqli;
     $html = "";
@@ -147,45 +174,38 @@ function printCheckbox($result,$table_name){
 }
 
 function printProducts($result){
-    $html = "";
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $id = $row['id'];
-            $name = $row['name'];
-            $price = $row['price'];
-            $sku = $row['sku'];
-            $brand = $row['brand'];
-            $html .= '
-                    <a href="/productos/'.getUrl($name).'-'.$id.'" class="card">
-                        <div class="top">
-                            <img src="/assets/img/product/'.getUrl($name).'-'.$sku.'.png" loading="lazy">
-                        </div>
-                        <div class="bottom">
-                            <div class="brand">
-                                <span>'.$brand.'</span><span><img src="/assets/svg/easy-credit.svg" alt"Easy Credit"></span>
-                            </div>
-                            <p>'.$name.'</p>
-                            <p>'.$price.' Bs</p>
-                            <button>Comprar</button>
-                        </div>
-                    </a>
-                ';
-        }
-    } else {
-        $html = "<p>Error</p>";
-        return $html;
-    }
-    return $html;
+  $html = "";
+  if ($result->num_rows > 0) {
+      while ($row = $result->fetch_assoc()) {
+          $id = $row['id'];
+          $name = $row['name'];
+          $price = $row['price'];
+          $sku = $row['sku'];
+          $brand = $row['brand'];
+          $html .= '
+                  <a href="/productos/'.getUrl($name).'-'.$id.'" class="card">
+                      <div class="top">
+                          <img src="/assets/img/product/'.getUrl($name).'-'.$sku.'.png" loading="lazy">
+                      </div>
+                      <div class="bottom">
+                          <div class="brand">
+                              <span>'.$brand.'</span><span><img src="/assets/svg/easy-credit.svg" alt"Easy Credit"></span>
+                          </div>
+                          <p>'.$name.'</p>
+                          <p>'.$price.' Bs</p>
+                          <button>Comprar</button>
+                      </div>
+                  </a>
+              ';
+      }
+  } else {
+      $html = "<p>Error</p>";
+      return $html;
+  }
+  return $html;
 }
 
-function selectForm($select){
-  global $mysqli;
-  $result = $mysqli->query("SELECT id,name FROM $select");
-  $result = showSelectForm($result);
-  return $result;
-}
-
-function showSelectForm($result){
+function printSelectForm($result){
   $html = "";
   while ($row = $result->fetch_assoc()) {
     if ($row['name']!="N/A") {
@@ -195,89 +215,90 @@ function showSelectForm($result){
   echo $html;
 }
 
-if (isset($_POST['reg-save'])) {
-  $name = $_POST['reg-name'];
-  $sku = $_POST['reg-sku'];
-  $price = $_POST['reg-price'];
-  $img = $_FILES['reg-img']['name'];
-  $brand = $_POST['reg-brand'];
-  $collection = $_POST['reg-collection'];
-  $department = $_POST['reg-department'];
-  $type1 = $_POST['reg-type1'];
-  $type2 = $_POST['reg-type2'];
-  $type3 = $_POST['reg-type3'];
-  $material = $_POST['reg-material'];
-  $color = $_POST['reg-color'];
-  var_dump($_FILES['reg-img']);
-  insertProduct($sku,$name,$price,$img,$brand,$material,$color,$collection,$department,$type1,$type2,$type3);
-}
+// ADMIN
+// if (isset($_POST['reg-save'])) {
+//   $name = $_POST['reg-name'];
+//   $sku = $_POST['reg-sku'];
+//   $price = $_POST['reg-price'];
+//   $img = $_FILES['reg-img']['name'];
+//   $brand = $_POST['reg-brand'];
+//   $collection = $_POST['reg-collection'];
+//   $department = $_POST['reg-department'];
+//   $type1 = $_POST['reg-type1'];
+//   $type2 = $_POST['reg-type2'];
+//   $type3 = $_POST['reg-type3'];
+//   $material = $_POST['reg-material'];
+//   $color = $_POST['reg-color'];
+//   var_dump($_FILES['reg-img']);
+//   insertProduct($sku,$name,$price,$img,$brand,$material,$color,$collection,$department,$type1,$type2,$type3);
+// }
 
 // INSERT PRODUCT
-function insertProduct($sku,$name,$price,$img,$brand,$material,$color,$collection,$department,$type1,$type2,$type3){
-    global $root, $mysqli;
-    if (isset($img) && $img != "") {
-      $type = $_FILES['reg-img']['type'];
-      $temp = $_FILES['reg-img']['tmp_name'];
+// function insertProduct($sku,$name,$price,$img,$brand,$material,$color,$collection,$department,$type1,$type2,$type3){
+//     global $root, $mysqli;
+//     if (isset($img) && $img != "") {
+//       $type = $_FILES['reg-img']['type'];
+//       $temp = $_FILES['reg-img']['tmp_name'];
   
-      if (!((strpos($type, 'gif') || strpos($type, 'jpeg') || strpos($type, 'webp') || strpos($type, 'png')))) {
-        $_SESSION['mensaje'] = 'Solo se admite archivos jpeg, gif, webp';
-      } 
-      else {
-        $query = $mysqli->query("INSERT INTO product(sku,name,price,brand_id,material_id,color_id,collection_id,department_id,type1_id,type2_id,type3_id) VALUES('$sku','$name','$price','$brand','$material','$color','$collection','$department','$type1','$type2','$type3')");
-        $result = $query;
-        if ($result) {
-          $_SESSION['mensaje'] = 'Se subió correctamente';
-          move_uploaded_file($temp, $root . '/assets/img/product/'.$img);
-          rename($root . '/assets/img/product/'.$img,$root . '/assets/img/product/'.getUrl($name).'-'.$sku.'.png');
-          $select = selectProductByCod($sku);
-          mkdir($root."/productos/".getUrl($name).'-'.$select['id']."", 0755);
-          copy("$root/php/templates/template.php","$root/productos/".getUrl($name).'-'.$select['id']."/index.php");
-          header('location: /admin');
-        } else {
-          $_SESSION['mensaje'] = 'Ocurrió un error';
-        }
-      }
-    } else {
-      echo '<script type="text/javascript">alert("Ingresa una imagen!");</>';
-    }
-}
+//       if (!((strpos($type, 'gif') || strpos($type, 'jpeg') || strpos($type, 'webp') || strpos($type, 'png')))) {
+//         $_SESSION['mensaje'] = 'Solo se admite archivos jpeg, gif, webp';
+//       } 
+//       else {
+//         $query = $mysqli->query("INSERT INTO product(sku,name,price,brand_id,material_id,color_id,collection_id,department_id,type1_id,type2_id,type3_id) VALUES('$sku','$name','$price','$brand','$material','$color','$collection','$department','$type1','$type2','$type3')");
+//         $result = $query;
+//         if ($result) {
+//           $_SESSION['mensaje'] = 'Se subió correctamente';
+//           move_uploaded_file($temp, $root . '/assets/img/product/'.$img);
+//           rename($root . '/assets/img/product/'.$img,$root . '/assets/img/product/'.getUrl($name).'-'.$sku.'.png');
+//           $select = selectProductByCod($sku);
+//           mkdir($root."/productos/".getUrl($name).'-'.$select['id']."", 0755);
+//           copy("$root/php/templates/template.php","$root/productos/".getUrl($name).'-'.$select['id']."/index.php");
+//           header('location: /admin');
+//         } else {
+//           $_SESSION['mensaje'] = 'Ocurrió un error';
+//         }
+//       }
+//     } else {
+//       echo '<script type="text/javascript">alert("Ingresa una imagen!");</>';
+//     }
+// }
 
 // UPDATE PRODUCT
-function updateProduct($codigo, $name, $price, $category, $brand, $material, $color, $id){
-    global $mysqli, $url;
-    $old = selectProductDetailById($id);
-    rename($url.'/assets/img/product/'.getUrl($old['name']).'-'.$old['cod'].'.png',$url . '/assets/img/product/'.getUrl($name).'-'.$codigo.'.png');
-    $result = $mysqli->query("UPDATE product SET cod='$codigo', name='$name', price=$price, kind_id=$category, brand_id=$brand, material_id=$material, color_id=$color WHERE id = $id");
-    header('location: ../');
-  }
-  function updateImage($image,$id){
-    global $mysqli, $url;
-    if (isset($image) && $image != "") {
-      $type = $_FILES['image']['type'];
-      $temp = $_FILES['image']['tmp_name'];
+// function updateProduct($codigo, $name, $price, $category, $brand, $material, $color, $id){
+//     global $mysqli, $url;
+//     $old = selectProductDetailById($id);
+//     rename($url.'/assets/img/product/'.getUrl($old['name']).'-'.$old['cod'].'.png',$url . '/assets/img/product/'.getUrl($name).'-'.$codigo.'.png');
+//     $result = $mysqli->query("UPDATE product SET cod='$codigo', name='$name', price=$price, kind_id=$category, brand_id=$brand, material_id=$material, color_id=$color WHERE id = $id");
+//     header('location: ../');
+//   }
+//   function updateImage($image,$id){
+//     global $mysqli, $url;
+//     if (isset($image) && $image != "") {
+//       $type = $_FILES['image']['type'];
+//       $temp = $_FILES['image']['tmp_name'];
   
-      if (!((strpos($type, 'gif') || strpos($type, 'jpeg') || strpos($type, 'webp') || strpos($type, 'png')))) {
-        $_SESSION['mensaje'] = 'Solo se admite archivos jpeg, gif, webp';
-      } else {
-        $result = $mysqli->query("UPDATE product SET image='$image' WHERE id = $id");
-        if ($result) {
-          move_uploaded_file($temp, $url . '/assets/img/product/'.$image);
-          header('location: ../');
-          return $result;
+//       if (!((strpos($type, 'gif') || strpos($type, 'jpeg') || strpos($type, 'webp') || strpos($type, 'png')))) {
+//         $_SESSION['mensaje'] = 'Solo se admite archivos jpeg, gif, webp';
+//       } else {
+//         $result = $mysqli->query("UPDATE product SET image='$image' WHERE id = $id");
+//         if ($result) {
+//           move_uploaded_file($temp, $url . '/assets/img/product/'.$image);
+//           header('location: ../');
+//           return $result;
           
-        } else {
-          $_SESSION['mensaje'] = 'Ocurrió un error';
-        }
-      }
-    } else {
-      echo '<script type="text/javascript">alert("Ingresa una imagen!");</script>';
-    }
+//         } else {
+//           $_SESSION['mensaje'] = 'Ocurrió un error';
+//         }
+//       }
+//     } else {
+//       echo '<script type="text/javascript">alert("Ingresa una imagen!");</script>';
+//     }
   
-}
+// }
 
 // DELETE PRODUCT
-function deleteProduct($id){
-  global $mysqli;
-  $result = $mysqli->query("DELETE FROM product WHERE id=$id");
-  return $result;
-}
+// function deleteProduct($id){
+//   global $mysqli;
+//   $result = $mysqli->query("DELETE FROM product WHERE id=$id");
+//   return $result;
+// }
