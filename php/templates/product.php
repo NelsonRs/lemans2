@@ -4,9 +4,9 @@
     $end = (explode('-',$url));
     $id = end($end);
     $product = selectProductDetailById($id);
-    if ($url=='?') {
-        header("location:javascript://history.go(-1)");
-    }
+    // if ($url=='?') {
+    //     header("location:javascript://history.go(-1)");
+    // }
     // print_r($product);
 ?>
 <!DOCTYPE html>

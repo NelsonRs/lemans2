@@ -173,9 +173,11 @@
                 width: 100%;
                 height: 75%;
                 img{
+                    transition: all .25s;
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    filter: brightness(.8);
                 }
             }
             .col-2{
@@ -218,6 +220,13 @@
                                 fill: var(--text);
                             }
                         }
+                    }
+                }
+            }
+            &:hover{
+                .col-1{
+                    img{
+                        filter: brightness(1);
                     }
                 }
             }

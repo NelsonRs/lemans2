@@ -1,11 +1,34 @@
 <?php $root = $_SERVER['DOCUMENT_ROOT']; require_once $root."/php/models/db.php";
 
 // SELECT
-function selectCheckbox($table_name){
-    global $mysqli;
-    $result = $mysqli->query("SELECT * FROM $table_name");
-    $result = printCheckbox($result,$table_name);
-    return $result;
+function selectCheckbox($table_name,$url){
+  global $mysqli; $html = ""; $result = '';
+
+  match ($table_name){
+    'brand' => $table_name = $mysqli->query("SELECT DISTINCT b.name FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
+    ,'color' => $table_name = $mysqli->query("SELECT DISTINCT c.name FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
+    ,'material' => $table_name = $mysqli->query("SELECT DISTINCT m.name FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
+  };
+  $result = $table_name;
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $name = $row['name'];
+      if ($name !='N/A') {
+        $n_rows = selectProductBadge($url);
+        $html .= '
+          <li class="option">
+              <input class="input_checkbox" name="" type="checkbox" id="'.getUrl($name).'-checkbox" value="'.getUrl($name).'">
+              <label for="'.getUrl($name).'-checkbox"><span class="filter-title">'.$name.'</span>'.$n_rows.'</label>
+          </li>
+        ';
+      }
+    }
+  }
+  else {
+        $html = "<p>Error</p>";
+        return $html;
+  }
+  return $html;
 }
 
 function selectProductByUrl($url){
@@ -133,46 +156,6 @@ function selectForm($select){
 }
 
 // PRINT
-function printCheckbox($result,$table_name){
-    global $mysqli;
-    $html = "";
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $t_name = $table_name;
-            $p="";
-            match ($t_name){
-                'brand'=>$t_name='B.name'
-               ,'color'=>$t_name='C.name'
-               ,'material'=>$t_name='M.name'
-               ,default =>$t_name=""
-           };
-            if ($row['name']!="N/A") {
-                $id = $row['id'];
-                $name = $row['name'];
-                $n_rows = $mysqli->query("SELECT P.id,P.name,P.sku,P.price,B.name AS'brand',C.name AS'color',M.name AS'material'FROM product P INNER JOIN brand B ON B.id = P.brand_id INNER JOIN color C ON C.id = P.color_id INNER JOIN material M ON M.id = P.material_id WHERE $t_name='$name'");
-                $n_rows = $n_rows->num_rows;
-                if ($n_rows!=0) {
-                    // $n_rows = " <b>•</b> ($n_rows)";
-                    $n_rows = " <b>$n_rows</b> ";
-                }
-                else{
-                    $n_rows = "";
-                }
-                $html .= '
-                        <li class="option">
-                            <input class="input_checkbox" name="" type="checkbox" id="'.$table_name.'-checkbox-'.$id.'" value="'.$name.'">
-                            <label for="'.$table_name.'-checkbox-'.$id.'"><span class="filter-title">'.$name.'</span>'.$n_rows.'</label>
-                        </li>
-                    ';
-            }
-        }
-    } else {
-        $html = "<p>Error</p>";
-        return $html;
-    }
-    return $html;
-}
-
 function printProducts($result){
   $html = "";
   if ($result->num_rows > 0) {

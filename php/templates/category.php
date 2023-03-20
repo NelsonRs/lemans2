@@ -55,23 +55,29 @@
                             <h2>Marcas</h2>
                         </button>
                         <form class="content form">
-                            <ul> <?=selectCheckbox('brand')?> </ul>
+                            <ul> <?=selectCheckbox('brand',$url)?> </ul>
                         </form>
                     </div>
-                    <div class="filter">
-                        <button class="collapsible">
-                            <h2>Material</h2>
-                        </button>
-                        <form class="content form">
-                            <ul> <?=selectCheckbox('material')?> </ul>
-                        </form>
-                    </div>
+                    <?php
+                        $html='';
+                        if (selectCheckbox('material',$url)!=''){
+                            $html.="<div class='filter'>
+                                        <button class='collapsible'>
+                                            <h2>Material</h2>
+                                        </button>
+                                        <form class='content form'>
+                                            <ul>".selectCheckbox('material',$url)."</ul>
+                                        </form>
+                                    </div>;";
+                                    return $html;
+                        }
+                    ?>
                     <div class="filter">
                         <button class="collapsible">
                             <h2>Color</h2>
                         </button>
                         <form class="content form">
-                            <ul> <?=selectCheckbox('color')?> </ul>
+                            <ul> <?=selectCheckbox('color',$url)?> </ul>
                         </form>
                     </div>
                 </div>
