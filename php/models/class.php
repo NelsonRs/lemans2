@@ -5,9 +5,10 @@ function selectCheckbox($table_name,$url){
   global $mysqli; $html = ""; $result = '';
 
   match ($table_name){
-    'brand' => $table_name = $mysqli->query("SELECT DISTINCT b.name FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
-    ,'color' => $table_name = $mysqli->query("SELECT DISTINCT c.name FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
-    ,'material' => $table_name = $mysqli->query("SELECT DISTINCT m.name FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
+    'brand' => $table_name = $mysqli->query("SELECT DISTINCT b.name FROM product p INNER JOIN collection co ON co.id = p.collection_id INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
+    ,'color' => $table_name = $mysqli->query("SELECT DISTINCT c.name FROM product p INNER JOIN collection co ON co.id = p.collection_id INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
+    ,'material' => $table_name = $mysqli->query("SELECT DISTINCT m.name FROM product p INNER JOIN collection co ON co.id = p.collection_id INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
+    ,'collection' => $table_name = $mysqli->query("SELECT DISTINCT co.name FROM product p INNER JOIN collection co ON co.id = p.collection_id INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
   };
   $result = $table_name;
   if ($result->num_rows > 0) {
@@ -47,9 +48,9 @@ function selectProductDetailById($id){
 
 function selectProductByDepartment($url){
   global $mysqli; $html = ""; $result = '';
-  $t1 = $mysqli->query("SELECT DISTINCT t1.name AS 'name' FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE dp.name = '$url'");
-  $t2 = $mysqli->query("SELECT DISTINCT t2.name AS 'name' FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE t1.name = '$url'");
-  $t3 = $mysqli->query("SELECT DISTINCT t3.name AS 'name' FROM product p INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE t2.name = '$url'");
+  $t1 = $mysqli->query("SELECT DISTINCT t1.name AS 'name' FROM product p INNER JOIN collection co ON co.id = p.collection_id INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE dp.name = '$url'");
+  $t2 = $mysqli->query("SELECT DISTINCT t2.name AS 'name' FROM product p INNER JOIN collection co ON co.id = p.collection_id INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE t1.name = '$url'");
+  $t3 = $mysqli->query("SELECT DISTINCT t3.name AS 'name' FROM product p INNER JOIN collection co ON co.id = p.collection_id INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id WHERE t2.name = '$url'");
   if ($t1->num_rows > 0) {
     $result = $t1;
   }
@@ -66,17 +67,14 @@ function selectProductByDepartment($url){
         $n_rows = selectProductBadge($url);
         $html .= '
           <li class="option">
-              <input class="input_checkbox" name="" type="checkbox" id="'.getUrl($name).'-checkbox" value="'.getUrl($name).'">
-              <label for="'.getUrl($name).'-checkbox"><span class="filter-title">'.$name.'</span>'.$n_rows.'</label>
+              <a href="/categorias/'.getUrl($name).'">'.$name.'<span class="badge">'.$n_rows.'</span></a>
           </li>
         ';
       }
     }
-  }
-  else {
-        $html = "<p>Error</p>";
-        return $html;
-  }
+  }else {
+    return $html = "<p>Error</p>";
+  } 
   return $html;
 }
   

@@ -29,15 +29,15 @@
         <?php include_once $root.'/php/templates/nav.php'; ?>
         <section class="section-index-hero">
             <h1>Le Mans Ltda.</h1>
-            <a href="?" class="col-1">
+            <a href="/categorias/muebles/" class="col-1">
                 <img id="img-hero-1" class="img-1" src="/assets/img/banner/banner-main.webp" alt="Sección de Muebles">
                 <p>Muebles</p>
             </a>
-            <a href="?" class="col-2">
+            <a href="/categorias/iluminacion/" class="col-2">
                 <img id="img-hero-2" src="/assets/img/banner/banner-main-iluminacion.jpg" alt="Sección de Iluminación">
                 <p>Iluminación</p>
             </a>
-            <a href="?" class="col-3">
+            <a href="/categorias/muebles/" class="col-3">
                 <img id="img-hero-3" src="/assets/img/banner/banner-index-hero-jardineria-1.webp" alt="Sección de Jardinería">
                 <p>Jardinería</p>
             </a>
@@ -49,10 +49,10 @@
             <div class="b-2">
                 <h2>Homecenter</h2>
             </div>
-            <div class="b-3" id="fixed-target">
+            <a href="/categorias/muebles/" class="b-3" id="fixed-target">
                 <img src="/assets/img/banner/banner-index-homecenter-1.webp" alt="Mesas">
                 <h3>Mesas</h3>
-            </div>
+            </a>
             <div class="b-4">
                 <img src="/assets/img/banner/banner-index-homecenter-2.webp" alt="Decoración">
                 <h3>Decoración</h3>
@@ -89,7 +89,7 @@
             <div class="b-2">
                 <h2>Industrial</h2>
             </div>
-            <div class="b-3">b
+            <div class="b-3">
                 <img src="/assets/img/banner/banner-index-industrial-1.webp" alt="Mesas">
                 <h3>Herramientas</h3>
             </div>

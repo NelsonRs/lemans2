@@ -295,7 +295,6 @@
   border-bottom: 1px solid var(--border);
   background: var(--card);
   outline: none;
-  transition: all 0.5s ease-out;
 }
 .section-products .grid .col-left .filter .collapsible h2 {
   font-size: 1rem;
@@ -309,10 +308,31 @@
   font-size: 1.5rem;
   color: var(--text);
 }
+.section-products .grid .col-left .filter .group-category ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  background: var(--card);
+}
+.section-products .grid .col-left .filter .group-category ul li a {
+  padding: 0.75rem;
+  background: var(--card);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.section-products .grid .col-left .filter .group-category ul li a:hover {
+  background: var(--hover);
+  border-radius: 10px;
+}
 .section-products .grid .col-left .filter .content {
   display: block;
   max-height: 0;
   overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s;
 }
 .section-products .grid .col-left .filter .content.active {
   display: contents;
@@ -320,14 +340,19 @@
 .section-products .grid .col-left .filter .content.active ul {
   padding: 1rem;
   background: var(--card);
+  transition: padding-top 0.25s ease-out;
 }
 .section-products .grid .col-left .filter .content.active ul li {
   display: flex;
   align-items: center;
 }
+.section-products .grid .col-left .filter .content.active ul li a {
+  width: 100%;
+}
 .section-products .grid .col-left .filter .content.active ul li label {
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
   width: 100%;
   padding: 0.75rem;
   border-bottom: 1px solid var(--border);
@@ -340,6 +365,9 @@
 .section-products .grid .col-left .filter .content.active ul * {
   font-size: 0.9rem;
   font-weight: 300;
+}
+.section-products .grid .col-left .filter .content ul {
+  transition: padding-top 0.25s ease-out;
 }
 .section-products .grid .col-left .filter .content ul li input[type=checkbox] {
   cursor: pointer;
@@ -384,7 +412,7 @@
   filter: brightness(1.1) contrast(1.1);
 }
 .section-products .grid .col-right .products .card:hover .bottom button {
-  background: var(--card);
+  background: var(--active);
 }
 .section-products .grid .col-right .products .card .top {
   transition: all 0.25s;

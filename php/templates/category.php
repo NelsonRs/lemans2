@@ -42,25 +42,45 @@
             </div>
             <div class="grid" id="grid">
                 <div class="col-left">
-                    <div class="filter">
-                        <button class="collapsible">
-                            <h2>Categorías</h2>
-                        </button>
-                        <form class="content form">
-                            <ul> <?=selectProductByDepartment($url)?> </ul>
-                        </form>
-                    </div>
-                    <div class="filter">
-                        <button class="collapsible">
-                            <h2>Marcas</h2>
-                        </button>
-                        <form class="content form">
-                            <ul> <?=selectCheckbox('brand',$url)?> </ul>
-                        </form>
-                    </div>
                     <?php
                         $html='';
-                        if (selectCheckbox('material',$url)!=''){
+                        if (selectProductByDepartment($url)!=''){
+                            $html.="<div class='filter'>
+                                        <button class='collapsible'>
+                                            <h2>Categorias</h2>
+                                        </button>
+                                        <div class='content group-category'>
+                                            <ul>".selectProductByDepartment($url)."</ul>
+                                        </div>
+                                    </div>";
+                        }if (selectCheckbox('brand',$url)!=''){
+                            $html.="<div class='filter'>
+                                        <button class='collapsible'>
+                                            <h2>Marca</h2>
+                                        </button>
+                                        <form class='content form'>
+                                            <ul>".selectCheckbox('brand',$url)."</ul>
+                                        </form>
+                                    </div>";
+                        }if (selectCheckbox('collection',$url)!=''){
+                            $html.="<div class='filter'>
+                                        <button class='collapsible'>
+                                            <h2>Colección</h2>
+                                        </button>
+                                        <form class='content form'>
+                                            <ul>".selectCheckbox('collection',$url)."</ul>
+                                        </form>
+                                    </div>";
+                        }if (selectCheckbox('color',$url)!=''){
+                            $html.="<div class='filter'>
+                                        <button class='collapsible'>
+                                            <h2>Color</h2>
+                                        </button>
+                                        <form class='content form'>
+                                            <ul>".selectCheckbox('color',$url)."</ul>
+                                        </form>
+                                    </div>";
+                        }if (selectCheckbox('material',$url)!=''){
                             $html.="<div class='filter'>
                                         <button class='collapsible'>
                                             <h2>Material</h2>
@@ -68,18 +88,10 @@
                                         <form class='content form'>
                                             <ul>".selectCheckbox('material',$url)."</ul>
                                         </form>
-                                    </div>;";
-                                    return $html;
+                                    </div>";
                         }
+                        echo $html;
                     ?>
-                    <div class="filter">
-                        <button class="collapsible">
-                            <h2>Color</h2>
-                        </button>
-                        <form class="content form">
-                            <ul> <?=selectCheckbox('color',$url)?> </ul>
-                        </form>
-                    </div>
                 </div>
                 <div class="col-right">
                     <div class="products">

@@ -12,3 +12,42 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+
+$(function () {
+  getProducts();
+
+  $(".input_checkbox").on("click", function (){
+    getProducts();
+  })
+});
+
+function getProducts() {
+
+  let form = $(".form");
+
+  $.ajax({
+     type:"POST"
+    ,url:"/php/models/filters.php"
+    ,data:form.serialize()
+    ,success:function(data){
+      $("#filters-card").html("");
+      $.each(JSON.parse(data), function(key, product){
+        let row = ""+
+          '<a href="/'+product.name+'-'+product.id+'" class="card">'+
+            '<div class="top">'+
+              '<img src="/assets/img/product/'+product.image+'" loading="lazy">'+
+            '</div>'+
+            '<div class="bottom">'+
+              '<div class="brand">'+
+                '<span>'+product.brand+'</span><span><img src="/assets/svg/easy-credit.svg" alt"Easy Credit"></span>'+
+              '</div>'+
+              '<p>'+product.name+'</p>'+
+              '<p>'+product.price+' Bs</p>'+
+              '<button>Comprar</button>'+
+            '</div>'+
+          '</a>';
+          $("#filters-card").append(row);
+      })
+    }
+  })
+}

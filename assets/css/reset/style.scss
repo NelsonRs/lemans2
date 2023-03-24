@@ -13,6 +13,7 @@ html[data-theme='light'] {
   --disabled:   #444746;
   --btn:        #DFDFDF;
   --btn-hover:  #CCCCCC;
+  --logo-bg:    #CE111B;
 }
 html[data-theme='dark'] {
   --link:       #A8C7FA;
@@ -24,6 +25,7 @@ html[data-theme='dark'] {
   --hover:      #393B3D;
   --disabled:   #C9CDCA;
   --btn:        #252525;
+  --logo-bg:    var(--text);
 }
 
 
@@ -126,10 +128,13 @@ html[data-theme='dark'] {
   }
 
   .navbar{
+    position: sticky;
+    top: 0;
     z-index: 10;
     display: flex;
     padding: 0.75rem 2rem ;
     border-bottom: 1px solid var(--border);
+    background: var(--bg);
     .col-left,.col-mid,.col-right{
         display: flex;
         align-items: center;
