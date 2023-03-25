@@ -94,9 +94,7 @@
                     ?>
                 </div>
                 <div class="col-right">
-                    <div class="products">
-                        <?=selectProductByUrl($url)?>
-                    </div>
+                    <div class="products" id="filters-card"></div>
                 </div>
             </div>
         </section>

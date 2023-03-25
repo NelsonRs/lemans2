@@ -119,7 +119,7 @@ function printFilters($result,$table_name){
               }
               $html .= '
                       <li class="option">
-                          <input class="input_checkbox" name="" type="checkbox" id="'.$table_name.'-checkbox-'.$id.'" value="'.$name.'">
+                          <input class="input_checkbox" name="'.$name.'" type="checkbox" id="'.$table_name.'-checkbox-'.$id.'" value="'.$name.'">
                           <label for="'.$table_name.'-checkbox-'.$id.'"><span class="filter-title">'.$name.$n_rows.'</span></label>
                       </li>
                   ';
@@ -283,3 +283,4 @@ function printSelectForm($result){
 //   $result = $mysqli->query("DELETE FROM product WHERE id=$id");
 //   return $result;
 // }
+
