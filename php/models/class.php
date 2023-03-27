@@ -3,6 +3,7 @@
 // SELECT
 function selectCheckbox($table_name,$url){
   global $mysqli; $html = ""; $result = '';
+  $table_column = $table_name;
 
   match ($table_name){
     'brand' => $table_name = $mysqli->query("SELECT DISTINCT b.name FROM product p INNER JOIN collection co ON co.id = p.collection_id INNER JOIN department dp ON dp.id = p.department_id INNER JOIN type1 t1 ON t1.id = p.type1_id INNER JOIN type2 t2 ON t2.id = p.type2_id INNER JOIN type3 t3 ON t3.id = p.type3_id INNER JOIN brand b ON b.id = p.brand_id INNER JOIN material m ON m.id = p.material_id INNER JOIN collection cl ON cl.id = p.collection_id INNER JOIN color c ON c.id = p.color_id WHERE dp.name='$url' OR t1.name='$url' OR t2.name='$url' OR t3.name='$url'")
@@ -18,7 +19,7 @@ function selectCheckbox($table_name,$url){
         $n_rows = selectProductBadge($url);
         $html .= '
           <li class="option">
-              <input class="input_checkbox" name="" type="checkbox" id="'.getUrl($name).'-checkbox" value="'.getUrl($name).'">
+              <input class="input_checkbox" name="'.$table_column.'[]" type="checkbox" id="'.getUrl($name).'-checkbox" value="'.getUrl($name).'">
               <label for="'.getUrl($name).'-checkbox"><span class="filter-title">'.$name.'</span>'.$n_rows.'</label>
           </li>
         ';
@@ -54,10 +55,10 @@ function selectProductByDepartment($url){
   if ($t1->num_rows > 0) {
     $result = $t1;
   }
-  elseif ($t2->num_rows > 0) {
+  if ($t2->num_rows > 0) {
     $result = $t2;
   }
-  elseif ($t3->num_rows > 0) {
+  if ($t3->num_rows > 0) {
     $result = $t3;
   }
   if ($result->num_rows > 0) {
@@ -73,7 +74,7 @@ function selectProductByDepartment($url){
       }
     }
   }else {
-    return $html = "<p>Error</p>";
+    $html = "<p>Error</p>";
   } 
   return $html;
 }
@@ -119,7 +120,7 @@ function printFilters($result,$table_name){
               }
               $html .= '
                       <li class="option">
-                          <input class="input_checkbox" name="'.$name.'" type="checkbox" id="'.$table_name.'-checkbox-'.$id.'" value="'.$name.'">
+                          <input class="input_checkbox" name="asd'.$table_name.'[]" type="checkbox" id="'.$table_name.'-checkbox-'.$id.'" value="'.$name.'">
                           <label for="'.$table_name.'-checkbox-'.$id.'"><span class="filter-title">'.$name.$n_rows.'</span></label>
                       </li>
                   ';

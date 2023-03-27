@@ -33,9 +33,9 @@ function getProducts() {
       $("#filters-card").html("");
       $.each(JSON.parse(data), function(key, product){
         let row = ""+
-          '<a href="/'+product.name+'-'+product.id+'" class="card">'+
+          '<a href="/productos/'+(product.name.replace(/\s+/g, '-')).toLowerCase()+'-'+product.id+'" class="card">'+
             '<div class="top">'+
-              '<img src="/assets/img/product/'+product.image+'" loading="lazy">'+
+              '<img src="/assets/img/product/'+(product.name.replace(/\s+/g, '-')).toLowerCase()+'-'+product.sku+'.png" loading="lazy">'+
             '</div>'+
             '<div class="bottom">'+
               '<div class="brand">'+

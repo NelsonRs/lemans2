@@ -44,7 +44,7 @@
                 <div class="col-left">
                     <?php
                         $html='';
-                        if (selectProductByDepartment($url)!=''){
+                        if (selectProductByDepartment($url)!='' OR selectProductByDepartment($url)!="Error" ){
                             $html.="<div class='filter'>
                                         <button class='collapsible'>
                                             <h2>Categorias</h2>
